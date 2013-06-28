@@ -1,0 +1,134 @@
+! Set font config
+Xft.dpi: 96.0
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+*customization:          -color
+XTerm*termName:         xterm-256color
+!XTerm*faceName:         Droid Sans Mono
+!XTerm*faceName:         Envy Code R
+!XTerm*faceName:         Liberation Mono
+XTerm*faceName:         Ubuntu Mono for Powerline:bold
+!!XTerm*faceSize:         12.7
+XTerm*faceSize:         11,7
+!XTerm*background:       #000000
+!XTerm*foreground:       #f8f8f8
+!XTerm*cursorColor:      #FFA500
+!XTerm*highlightColor:   #3C0C59
+!XTerm*color0:           #000000
+!XTerm*color3:           #eab93d
+!XTerm*color6:           #89b6e2
+!XTerm*color7:           #cccccc
+!XTerm*color8:           #555753
+!XTerm*color11:          #ffc123
+!XTerm*color12:          #3465a4
+!XTerm*color13:          #f57900
+!XTerm*color14:          #46a4ff
+!XTerm*color15:          #ffffff
+
+! ======================================
+! Molokai theme for Xterm
+! source: https://gist.github.com/845878
+! ======================================
+! Almost perfect config: 07042012 (before "Tomorrow")
+!*xterm*cursorColor: #f07746
+!*xterm*background: #2d2d2d
+!*xterm*foreground: #ffffff
+!*xterm*color0: #101010
+!*xterm*color1: #960050
+!*xterm*color2: #66aa11
+!*xterm*color3: #c47f2c
+!*xterm*color4: #30309b
+!*xterm*color5: #7e40a5
+!*xterm*color6: #3579a8
+!*xterm*color7: #9999aa
+!*xterm*color8: #303030
+!*xterm*color9: #ff0090
+!*xterm*color10: #80ff00
+!*xterm*color11: #ffba68
+!*xterm*color12: #5f5fee
+!*xterm*color13: #bb88dd
+!*xterm*color14: #4eb4fa
+!*xterm*color15: #d0d0d0
+
+!! Molokai theme
+!! ORIGINAL: *xterm*background: #1B1D1E
+!!*xterm*background: #1c1c1c
+!!xterm*background: #002B36
+!!xterm*background: #03304E
+!!*xterm*background: #193549
+!! ORIGINAL: *xterm*foreground: #d0d0d0
+!! ORIGINAL: *xterm*foreground: #c5c8c6
+!*xterm*background: #262626
+!*xterm*foreground: #eeeeee
+!*xterm*cursorColor: #f0c674
+!*xterm*color0: #101010
+!*xterm*color1: #960050
+!*xterm*color2: #66aa11
+!*xterm*color3: #c47f2c
+!*xterm*color4: #30309b
+!*xterm*color5: #7e40a5
+!*xterm*color6: #3579a8
+!*xterm*color7: #9999aa
+!*xterm*color8: #303030
+!*xterm*color9: #ff0090
+!*xterm*color10: #80ff00
+!*xterm*color11: #ffba68
+!*xterm*color12: #5f5fee
+!*xterm*color13: #bb88dd
+!*xterm*color14: #4eb4fa
+!*xterm*color15: #d0d0d0
+
+!TomorrowNight
+#define t_background        #1d1f21
+#define t_current_line      #282a2e
+#define t_selection         #373b41
+#define t_foreground        #c5c8c6
+#define t_comment           #969896
+#define t_red               #cc6666
+#define t_orange            #de935f
+#define t_yellow            #f0c674
+#define t_green             #b5bd68
+#define t_aqua              #8abeb7
+#define t_blue              #81a2be
+#define t_purple            #b294bb
+
+
+*xterm*.foreground:   t_foreground
+*xterm*.background:   t_background
+*xterm*.cursorColor:  #f07746
+
+! Black / Grey
+*xterm*.color0:       #000000
+*xterm*.color8:       #666666
+
+! Red / Bright Red
+*xterm*.color1:       t_red
+*xterm*.color9:       #FF3334
+
+! Green + Bright Green
+*xterm*.color2:       t_green
+*xterm*.color10:      #9ec400
+
+! Yellow (Orange) + Bright Yellow (Yellow)
+*xterm*.color3:       t_orange
+*xterm*.color11:      t_yellow
+
+! Blue + Bright Blue
+*xterm*.color4:       t_blue
+*xterm*.color12:      t_blue
+
+! Magenta (Purple) + Bright Magenta
+*xterm*.color5:       t_purple
+*xterm*.color13:      #b777e0
+
+! Cyan (Aqua) + Bright Cyan
+*xterm*.color6:       t_aqua
+*xterm*.color14:      #54ced6
+
+! Light Grey (Selection) + White (Current Line)
+*xterm*.color7:       t_selection
+*xterm*.color15:      t_current_line
