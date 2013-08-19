@@ -4,6 +4,7 @@
 PATH=${PATH}":${HOME}/.config/awesome/bin"
 # Fixes Awesome WM bug with java apps that use Swing
 _JAVA_AWT_WM_NONREPARENTING=1
+JAVA_HOME="/usr/lib/jvm/jdk1.6"
 
 ################
 # Useful aliases
@@ -30,8 +31,12 @@ alias 'vimperator=firefox -P vimperator -no-remote';
 # or
 # source: https://bbs.archlinux.org/viewtopic.php?pid=877675#p877675
 ####################################################################
+CLPURPLE="\[\033[0;35m\]"
 CLCYAN="\[\033[0;36m\]"  # text elements
-CLBLUE="\[\033[1;34m\]"  # brackets
+CLBLUE="\[\033[0;34m\]"  # brackets
+CLBLUE2="\[\033[1;34m\]"  # brackets
+CLYELLOW="\[\033[0;33m\]"  # text elements
+CLRED="\[\033[0;31m\]"  # text elements
 CLGREEN="\[\033[0;32m\]"  # text elements
 CLLIGHTGREEN="\[\033[1;32m\]"  # brackets
 CLPURP="\[\033[1;35m\]"  # for user if whoami outputs 'root'
@@ -39,9 +44,9 @@ CLLGREY="\[\033[1;37m\]" # for user if whoami outputs something other than 'root
 CLSYS="\[\033[0;0m\]"    # set the text after the prompt to the color defined in the terminal profile
 if [ `/usr/bin/whoami` = 'root' ]
 then
-    export PS1="$CLLIGHTGREEN[$CLPURP\u$CLLIGHTGREEN@$CLGREEN\h$CLLIGHTGREEN][$CLGREEN\w$CLLIGHTGREEN] : $CLSYS"
+    export PS1="$CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN] : $CLSYS"
 else
-    export PS1="$CLLIGHTGREEN[$CLSYS\u$CLLIGHTGREEN@$CLGREEN\h$CLLIGHTGREEN] $CLGREEN\w$CLLIGHTGREEN : $CLSYS"
+    export PS1="$CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN : $CLSYS"
 fi
 ####################################################################
 # Prompt Customization 2
