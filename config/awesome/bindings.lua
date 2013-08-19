@@ -13,7 +13,7 @@ root.buttons(awful.util.table.join(
 -------------------------------------------------------------------------------
 globalkeys = awful.util.table.join(
     -- Open an application selector
-     awful.key({ "Mod1"           }, "Tab", function ()
+    awful.key({ modkey,           }, "Tab", function ()
          -- If you want to always position the menu on the same place set coordinates
          awful.menu.menu_keys.down = { "Down", "Alt_L" }
          local cmenu = awful.menu.clients({width=245}, { keygrabber=true, coords={x=525, y=330} }) end),
@@ -39,13 +39,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    -- -----------------------------------------------------------------
+    -- Disabled, modkey + Tab will display the list of available clients
+    -- awful.key({ modkey, }, "Tab", function () awful.client.focus.history.previous() if client.focus then client.focus:raise() end end),
+    -- -----------------------------------------------------------------
 
     -- Resize floats using the keyboar (form Awesome FAQ)
     awful.key({ modkey, "Shift"   }, "Down",    function () awful.client.moveresize(  0,   0,   0,  40) end),
