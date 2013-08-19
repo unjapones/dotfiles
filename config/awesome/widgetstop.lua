@@ -1,19 +1,28 @@
 --mytextclock = awful.widget.textclock({ align = "right" })
-mytextclock = awful.widget.textclock({ align = "right"}, " <span font='' color='#a6e22e'>%H:%M %d.%m.%Y</span> ")
+mytextclock = awful.widget.textclock(
+  { align = "right"},
+  " <span font='' color='#a6e22e'>%H:%M %d/%m</span> ")
 
 -- Ram widget
 memwidget = widget({ type = "textbox" })
 	vicious.cache(vicious.widgets.mem)
 	vicious.register(memwidget, vicious.widgets.mem, " ram: $1%", 5)
 
--- wlan
+-- Wlan
 wifiupdownwidget = widget({ type = "textbox" })
-	vicious.register(wifiupdownwidget, vicious.widgets.net, " wu: ${wlan0 up_kb} wd: ${wlan0 down_kb}")
+	--vicious.register(wifiupdownwidget, vicious.widgets.net, " wu: ${wlan0 up_kb} wd: ${wlan0 down_kb}")
+  vicious.register(
+    wifiupdownwidget,
+    vicious.widgets.net,
+    " ${wlan0 down_kb}/${wlan0 up_kb}")
 
--- wlan
+-- Thermal
 thermalwidget = widget({ type = "textbox" })
 	-- vicious.register(thermalwidget, vicious.widgets.thermal, " <span font='bold' color='#f07746'>$1°C</span>", 20, "thermal_zone0")
-	vicious.register(thermalwidget, vicious.widgets.thermal, " <span font='bold' color='#a6e22e'>$1°C</span>", 20, "thermal_zone1")
+	vicious.register(
+    thermalwidget,
+    vicious.widgets.thermal,
+    " <span color='#a6e22e'>$1°C</span>", 20, "thermal_zone1")
 
 -- Create a systray
 mysystray = widget({ type = "systray" })

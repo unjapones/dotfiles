@@ -13,8 +13,8 @@ theme.wallpaper_cmd = { "awsetbg -a /home/japones/.config/awesome/themes/zenburn
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Ubuntu Mono 11.1"
---theme.font      = "Envy Code R 9.1"
+--theme.font      = "Ubuntu Mono 11.1"
+theme.font      = "Envy Code R 10.3"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
@@ -37,9 +37,9 @@ theme.bg_urgent = "#1E2320"
 theme.border_width  = "1"
 --theme.border_normal = "#3F3F3F"
 --theme.border_normal = "#555555"
-theme.border_normal  = "#444444"
+theme.border_normal  = "#777777"
 --theme.border_focus  = "#6F6F6F"
-theme.border_focus  = "#444444"
+theme.border_focus  = "#777777"
 theme.border_marked = "#CC9393"
 -- }}}
 
