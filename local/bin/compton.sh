@@ -10,4 +10,4 @@
 # -l -17 Left offset for shadows
 # -I 0.1 Opaciti change between steps while fading in
 # -O 0.1 Opaciti change between steps while fading out
-/home/japones/Nerd/linux/desktop/compton/compton -cCGbf -o 0.8  -l -17 -I 0.1 -O 0.1
+${HOME}/Nerd/repos/compton/compton -cCGbf -o 0.8  -l -17 -I 0.1 -O 0.1

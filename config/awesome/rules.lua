@@ -12,6 +12,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "spotify" },
+      properties = { floating = false } },
     --{ rule = { class = "xterm" },
       --properties = { floating = false, opacity = 0.3 } },
     -- Set Firefox to always map on tags number 2 of screen 1.

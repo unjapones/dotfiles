@@ -13,16 +13,20 @@ XTerm*termName:         xterm-256color
 ! ======================================
 ! Xterm font config
 ! ====================================== 
-XTerm*faceName:         Envy Code R
-XTerm*faceSize:         11,7
+!XTerm*faceName:         Envy Code R
+!XTerm*faceSize:         11,7
 !XTerm*faceName:         Ubuntu Mono for Powerline:bold
 !XTerm*faceSize:         11,7
+XTerm*faceName:         Ubuntu Mono
+XTerm*faceSize:         12,7
 ! ======================================
 ! Xterm Color configuration
 ! ======================================
 !*xterm*cursorColor: #f07746
 *xterm*cursorColor: #75715e
-*xterm*background: #212121
+!*xterm*background: #212121
+! From Dracula color scheme https://github.com/zenorocha/dracula-theme
+*xterm*background: #282a36
 *xterm*foreground: #dcdcdc
 ! ======================================
 ! Molokai: https://gist.github.com/845878

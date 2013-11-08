@@ -86,7 +86,7 @@ globalkeys = awful.util.table.join(
               end),
 
     -- Dropdown terminal
-    awful.key({ modkey            }, "o",      function () scratch.drop("xterm -ls -e 'tmux'","bottom","center",1,0.4) end),
+    awful.key({ modkey            }, "o",      function () scratch.drop("xterm -bg '#212121' -ls -e 'tmux'","bottom","center",1,0.4) end),
     awful.key({ modkey, "Shift"   }, "o",      function () scratch.drop("gnome-terminal","bottom","center",1,0.5) end)
 )
 

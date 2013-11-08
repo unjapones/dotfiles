@@ -23,6 +23,6 @@ require("rules")
 require("signals")
 
 awful.util.spawn_with_shell("compton.sh")
-awful.util.spawn_with_shell("xrdb /home/japones/.Xresources")
+awful.util.spawn_with_shell("xrdb ~/.Xresources")
 awful.util.spawn_with_shell("gnome-session")
 awful.util.spawn_with_shell("parcellite --no-icon")

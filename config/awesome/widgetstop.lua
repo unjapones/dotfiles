@@ -15,6 +15,7 @@ wifiupdownwidget = widget({ type = "textbox" })
     wifiupdownwidget,
     vicious.widgets.net,
     " ${wlan0 down_kb}/${wlan0 up_kb}")
+    --" ${eth0 down_kb}/${eth0 up_kb}")
 
 -- Thermal
 thermalwidget = widget({ type = "textbox" })
