@@ -1,0 +1,21 @@
+{
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/Theme - Aqua/Color Schemes/Monokai Aqua.tmTheme",
+	"fade_fold_buttons": false,
+	"font_face": "Ubuntu Mono",
+	"font_size": 10.7,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 2,
+	"tab_size": 2
+}
