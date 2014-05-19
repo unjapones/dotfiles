@@ -8,8 +8,9 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "setwall.sh" }
---theme.wallpaper_cmd = { "awsetbg -a -r /home/japones/.config/awesome/themes/zenburn/walls" }
+--theme.wallpaper_cmd = { "setwall.sh" }
+theme.wallpaper_cmd = { "awsetbg /home/topones/.config/awesome/themes/zenburn/defaultwall" }
+--theme.wallpaper_cmd = { "awsetbg -R /home/topones/Imágenes/walls/walls_last" }
 -- }}}
 
 -- {{{ Styles

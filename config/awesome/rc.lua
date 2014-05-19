@@ -8,7 +8,7 @@ require("scratch")
 
 beautiful.init(awful.util.getdir('config').."/themes/zenburn/theme.lua")
 
-terminal = "xterm -ls -g 135x35"
+terminal = "xterm -ls -g 130x43"
 editor = os.getenv("EDITOR") or "gvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -22,7 +22,8 @@ require("bindings")
 require("rules")
 require("signals")
 
-awful.util.spawn_with_shell("compton.sh")
+awful.util.spawn_with_shell("/home/topones/Nerd/repos/dotfiles/local/bin/compton.sh")
 awful.util.spawn_with_shell("xrdb ~/.Xresources")
 awful.util.spawn_with_shell("gnome-session")
-awful.util.spawn_with_shell("parcellite --no-icon")
+awful.util.spawn_with_shell("parcellite")
+awful.util.spawn_with_shell("fdpowermon")
