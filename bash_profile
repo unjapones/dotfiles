@@ -1,6 +1,9 @@
 ###################################################################################################
 # Useful enviromental variables
 ###################################################################################################
+_JAVA_AWT_WM_NONREPARENTING=1
+wmname LG3D
+
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
 PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
@@ -16,10 +19,13 @@ alias 'grep=grep -n --color=auto';
 alias 'makemeroot=sudo bash -ls';
 alias 'mysqlroot=mysql -u root -p --default-character-set=utf8';
 alias 'mynautilus=nautilus --no-desktop';
-alias 'copywar=cp $HOME/.m2/repository/com/intercall/webonyx/webonyx/1.4-RELEASE/webonyx-1.4-RELEASE.war';
+#alias 'copywar=cp $HOME/.m2/repository/com/intercall/webonyx/webonyx/1.6-RELEASE/webonyx-1.6-RELEASE.war';
 alias 'mvninstall=mvn clean install -Dmaven.test.skip=true -Dmaven.compiler.debug=true';
 alias 'mvninstalltest=mvn clean install -Dmaven.compiler.debug=true';
 
+alias 'h-list=hamster-cli list';
+alias 'h-start=hamster-cli start';
+alias 'h-stop=hamster-cli stop';
 
 ###################################################################################################
 # Prompt Customization 1
@@ -55,8 +61,19 @@ _JAVA_AWT_WM_NONREPARENTING=1
 
 
 ###################################################################################################
+# Nerd settings
+###################################################################################################
+QOOBIZ="${HOME}/Nerd/FL/qoobiz"
+QOOBIZSRC="${HOME}/Nerd/FL/qoobiz/src/Verne"
+alias 'apacheservice=sudo sh /etc/init.d/apache2';
+alias 'symph_clearcache=php app/console cache:clear';
+
+
+###################################################################################################
 # Work settings
 ###################################################################################################
+alias 'pstom=ps ax | grep tomcat';
+
 WORK_MAVEN_BIN="${HOME}/Work/CS/local/apache-maven-3.0.5/bin"
 WORK_DBEAVER_BIN="${HOME}/Work/CS/local/dbeaver"
 WORK_OPENJDK64_BIN="/usr/lib/jvm/java-1.6.0-openjdk-amd64/bin"
@@ -64,8 +81,17 @@ JAVA_HOME="/usr/lib/jvm/java-6-openjdk-amd64/"
 PATH=${PATH}":${WORK_MAVEN_BIN}:${WORK_DBEAVER_BIN}:${WORK_OPENJDK64_BIN}"
 
 CSLOCAL="${HOME}/Work/CS/local"
+CSSRC="${HOME}/Work/CS/src"
 WOSRC="${HOME}/Work/CS/workspace/webonyx"
-TOM="${HOME}/Work/CS/local/apache-tomcat-7.0.41-netbeans/apache-tomcat-7.0.41"
 
+ISSD="${HOME}/Work/ISSD"
+ISSDLOCAL="${ISSD}/local"
+ISSDSRC="${ISSD}/src/WebExServicePortal"
+ISSDPORTALSRC="${ISSDSRC}/issd-portal"
+TOM="${ISSD}/local/apache-tomcat-7.0.41"
+alias 'copywar=cp $HOME/.m2/repository/com/intercall/issd/issd-portal/1.2/issd-portal-1.2.war $TOM/webapps/issd-portal.war';
+alias 'catalinastart=cd $TOM/bin && ./catalina.sh start && tailf ../logs/catalina.out';
+alias 'meldviews=meld $TOM/webapps/issd-portal/WEB-INF/views ~/Work/ISSD/src/WebExServicePortal/issd-portal/src/main/webapp/WEB-INF/views/';
+alias 'meldportal=meld $TOM/webapps/issd-portal/WEB-INF ~/Work/ISSD/src/WebExServicePortal/issd-portal/src/main/webapp/WEB-INF';
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
