@@ -4,6 +4,7 @@
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
 PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
+TERM='xterm-256color'
 
 
 ###################################################################################################
@@ -16,9 +17,11 @@ alias 'grep=grep -n --color=auto';
 alias 'makemeroot=sudo bash -ls';
 alias 'mysqlroot=mysql -u root -p --default-character-set=utf8';
 alias 'mynautilus=nautilus --no-desktop';
-alias 'copywar=cp $HOME/.m2/repository/com/intercall/webonyx/webonyx/1.4-RELEASE/webonyx-1.4-RELEASE.war';
-alias 'mvninstall=mvn clean install -Dmaven.test.skip=true -Dmaven.compiler.debug=true';
+alias 'copywar=cp $HOME/.m2/repository/com/intercall/webonyx/webonyx/1.6-RELEASE/webonyx-1.6-RELEASE.war';
 alias 'mvninstalltest=mvn clean install -Dmaven.compiler.debug=true';
+alias 'mvninstall=mvn clean install -Dmaven.test.skip=true -Dmaven.compiler.debug=true';
+alias 'catalinastart=cd $TOM/bin && ./catalina.sh start && tailf ../logs/catalina.out';
+alias 'pstomcat=ps ax | grep tomcat';
 
 
 ###################################################################################################
@@ -37,13 +40,18 @@ CLLIGHTGREEN="\[\033[1;32m\]"  # brackets
 CLPURP="\[\033[1;35m\]"  # for user if whoami outputs 'root'
 CLLGREY="\[\033[1;37m\]" # for user if whoami outputs something other than 'root'
 CLSYS="\[\033[0;0m\]"    # set the text after the prompt to the color defined in the terminal profile
+# if [ `/usr/bin/whoami` = 'root' ]
+# then
+#     export PS1="$CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN] : $CLSYS"
+# else
+#     export PS1="$CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN : $CLSYS"
+# fi
 if [ `/usr/bin/whoami` = 'root' ]
 then
-    export PS1="$CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN] : $CLSYS"
+    export PS1="$CLBLUE2[\D{%T}] $CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN] $ $CLSYS"
 else
-    export PS1="$CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN : $CLSYS"
+    export PS1="$CLBLUE2[\D{%T}] $CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN $ $CLSYS"
 fi
-
 
 ###################################################################################################
 # Other settings
@@ -55,6 +63,13 @@ _JAVA_AWT_WM_NONREPARENTING=1
 
 
 ###################################################################################################
+# FL settings
+###################################################################################################
+QOOBIZ="${HOME}/Nerd/FL/qoobiz"
+QOOBIZSRC="${HOME}/Nerd/FL/qoobiz/src/Verne"
+
+alias 'apacheservice=sudo sh /etc/init.d/apache2';
+###################################################################################################
 # Work settings
 ###################################################################################################
 WORK_MAVEN_BIN="${HOME}/Work/CS/local/apache-maven-3.0.5/bin"
@@ -64,7 +79,7 @@ JAVA_HOME="/usr/lib/jvm/java-6-openjdk-amd64/"
 PATH=${PATH}":${WORK_MAVEN_BIN}:${WORK_DBEAVER_BIN}:${WORK_OPENJDK64_BIN}"
 
 CSLOCAL="${HOME}/Work/CS/local"
-WOSRC="${HOME}/Work/CS/workspace/webonyx"
+CSSRC="${HOME}/Work/CS/src"
 TOM="${HOME}/Work/CS/local/apache-tomcat-7.0.41-netbeans/apache-tomcat-7.0.41"
 
 
