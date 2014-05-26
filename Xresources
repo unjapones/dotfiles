@@ -18,7 +18,8 @@ XTerm*termName:         xterm-256color
 !XTerm*faceName:         Ubuntu Mono for Powerline:bold
 !XTerm*faceSize:         11,7
 XTerm*faceName:         Ubuntu Mono
-XTerm*faceSize:         12,7
+!XTerm*faceSize:         12,7
+XTerm*faceSize:         11,2
 ! ======================================
 ! Xterm Color configuration
 ! ======================================
@@ -26,7 +27,8 @@ XTerm*faceSize:         12,7
 *xterm*cursorColor: #75715e
 !*xterm*background: #212121
 ! From Dracula color scheme https://github.com/zenorocha/dracula-theme
-*xterm*background: #282a36
+!*xterm*background: #282a36
+*xterm*background: #2d2d2d
 *xterm*foreground: #dcdcdc
 ! ======================================
 ! Molokai: https://gist.github.com/845878
