@@ -3,6 +3,7 @@
 ###################################################################################################
 _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D
+TERM='xterm-256color'
 
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
@@ -32,6 +33,12 @@ alias 'h-stop=hamster-cli stop';
 # source: https://bbs.archlinux.org/viewtopic.php?pid=581612
 # source: https://bbs.archlinux.org/viewtopic.php?pid=877675#p877675
 ###################################################################################################
+
+# Reference the function in the prompt using: '$(parse_git_branch)' -> NOTE THE SINGLE QUOTES
+parse_git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 CLPURPLE="\[\033[0;35m\]"
 CLCYAN="\[\033[0;36m\]"  # text elements
 CLBLUE="\[\033[0;34m\]"  # brackets
@@ -47,7 +54,7 @@ if [ `/usr/bin/whoami` = 'root' ]
 then
     export PS1="$CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN] : $CLSYS"
 else
-    export PS1="$CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN : $CLSYS"
+    export PS1="$CLCYAN[\D{%T}] $CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w $CLCYAN"'$(parse_git_branch)'" $CLGREEN$ $CLSYS"
 fi
 
 
@@ -80,18 +87,11 @@ WORK_OPENJDK64_BIN="/usr/lib/jvm/java-1.6.0-openjdk-amd64/bin"
 JAVA_HOME="/usr/lib/jvm/java-6-openjdk-amd64/"
 PATH=${PATH}":${WORK_MAVEN_BIN}:${WORK_DBEAVER_BIN}:${WORK_OPENJDK64_BIN}"
 
-CSLOCAL="${HOME}/Work/CS/local"
-CSSRC="${HOME}/Work/CS/src"
-WOSRC="${HOME}/Work/CS/workspace/webonyx"
+MOBILESHELLSRC="${HOME}/Work/WMG/mobile-shell/src/mobile-shell"
+PATH="${PATH}:$HOME/Work/WMG/local/adt-bundle/sdk/build-tools"
+PATH="${PATH}:$HOME/Work/WMG/local/adt-bundle/sdk/platform-tools"
+PATH="${PATH}:$HOME/Work/WMG/local/adt-bundle/sdk/tools"
+ANDROID_HOME="$HOME/Work/WMG/local/adt-bundle/sdk"
 
-ISSD="${HOME}/Work/ISSD"
-ISSDLOCAL="${ISSD}/local"
-ISSDSRC="${ISSD}/src/WebExServicePortal"
-ISSDPORTALSRC="${ISSDSRC}/issd-portal"
-TOM="${ISSD}/local/apache-tomcat-7.0.41"
-alias 'copywar=cp $HOME/.m2/repository/com/intercall/issd/issd-portal/1.2/issd-portal-1.2.war $TOM/webapps/issd-portal.war';
-alias 'catalinastart=cd $TOM/bin && ./catalina.sh start && tailf ../logs/catalina.out';
-alias 'meldviews=meld $TOM/webapps/issd-portal/WEB-INF/views ~/Work/ISSD/src/WebExServicePortal/issd-portal/src/main/webapp/WEB-INF/views/';
-alias 'meldportal=meld $TOM/webapps/issd-portal/WEB-INF ~/Work/ISSD/src/WebExServicePortal/issd-portal/src/main/webapp/WEB-INF';
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
