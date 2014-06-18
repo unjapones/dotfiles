@@ -9,7 +9,7 @@
 -- {{{ Main
 theme = {}
 --theme.wallpaper_cmd = { "setwall.sh" }
-theme.wallpaper_cmd = { "awsetbg /home/topones/.config/awesome/themes/zenburn/defaultwall" }
+--theme.wallpaper_cmd = { "awsetbg /home/topones/.config/awesome/themes/zenburn/defaultwall" }
 --theme.wallpaper_cmd = { "awsetbg -R /home/topones/Imágenes/walls/walls_last" }
 -- }}}
 
@@ -38,9 +38,9 @@ theme.bg_urgent = "#1E2320"
 theme.border_width  = "1"
 --theme.border_normal = "#3F3F3F"
 --theme.border_normal = "#555555"
-theme.border_normal  = "#777777"
+theme.border_normal  = "#666666"
 --theme.border_focus  = "#6F6F6F"
-theme.border_focus  = "#777777"
+theme.border_focus  = "#666666"
 theme.border_marked = "#CC9393"
 -- }}}
 
