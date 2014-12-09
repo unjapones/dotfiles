@@ -56,11 +56,11 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn("gnome-terminal") end),
-    awful.key({ modkey,           }, "e",      function () awful.util.spawn("nautilus --no-desktop") end),
+    --awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn("gnome-terminal") end),
+    awful.key({ modkey,           }, "e",      function () awful.util.spawn("nautilus") end),
     --awful.key({ modkey,           }, "i",      function () awful.util.spawn("gnome-screenshot -i -a") end),
-    awful.key({ modkey, "Shift"   }, "b",      function () awful.util.spawn("awsetbg -a -r /home/japones/Imágenes/walls20") end),
-    awful.key({ modkey, "Shift"   }, "i",      function () awful.util.spawn("firefox") end),
+    --awful.key({ modkey, "Shift"   }, "b",      function () awful.util.spawn("awsetbg -a -r /home/japones/Imágenes/walls20") end),
+    --awful.key({ modkey, "Shift"   }, "i",      function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "i",      function () awful.util.spawn("luakit") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
