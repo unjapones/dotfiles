@@ -23,7 +23,7 @@ thermalwidget = widget({ type = "textbox" })
 	vicious.register(
     thermalwidget,
     vicious.widgets.thermal,
-    " <span color='#a6e22e'>$1°C</span>", 20, "thermal_zone1")
+    " <span color='#a6e22e'>$1°C</span>", 20, "thermal_zone2")
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
