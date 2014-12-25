@@ -32,6 +32,8 @@ sudo apt-get install sublime-text-installer
 	+ less
 	+ coffee
 	+ seti UX
+	+ soda theme
+	+ cobalt2 color scheme
 
 
 - nodejs
@@ -52,5 +54,13 @@ http://www.skype.com/es/download-skype/skype-for-computer/
 - spotify
 https://www.spotify.com/ar/download/
 
+tlp power saving
+http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html
+sudo add-apt-repository ppa:linrunner/tlp
+sudo apt-get update
+sudo apt-get install tlp tlp-rdw
+sudo tlp start
+
 - temp-throttle
 https://github.com/Sepero/temp-throttle.git
+
