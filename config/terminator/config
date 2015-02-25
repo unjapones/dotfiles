@@ -1,0 +1,47 @@
+[global_config]
+  enabled_plugins = ,
+  borderless = True
+  hide_from_taskbar = True
+  title_hide_sizetext = True
+  geometry_hinting = False
+  title_transmit_bg_color = "#141414"
+  tab_position = hidden
+  inactive_color_offset = 0.74
+[keybindings]
+  hide_window = <Super>o
+[profiles]
+  [[default]]
+    palette = "#1C1C1C:#ff005b:#cee318:#ffe755:#3465A4:#833c9f:#0ac1cd:#e5e5e5:#666666:#ff00a0:#ccff00:#ff9f00:#48c6ff:#be67e1:#63e7f0:#f3f3f3:"
+    login_shell = True
+    visible_bell = True
+    background_image = None
+    background_darkness = 0.63
+    use_system_font = False
+    cursor_color = "#3dff00"
+    foreground_color = "#dcdcdc"
+    icon_bell = False
+    show_titlebar = False
+    font = Ubuntu Mono for Powerline 12.7001953125
+    background_color = "#272822"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+  [[bottom]]
+    [[[child0]]]
+      position = 0:378
+      type = Window
+      order = 0
+      parent = ""
+      size = 1362, 386
+    [[[terminal1]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child0
+[plugins]
