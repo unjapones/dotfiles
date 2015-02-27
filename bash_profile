@@ -4,6 +4,7 @@
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
 PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
+TERM=screen-256color
 
 
 ###################################################################################################
@@ -57,15 +58,7 @@ _JAVA_AWT_WM_NONREPARENTING=1
 ###################################################################################################
 # Work settings
 ###################################################################################################
-WORK_MAVEN_BIN="${HOME}/Work/CS/local/apache-maven-3.0.5/bin"
-WORK_DBEAVER_BIN="${HOME}/Work/CS/local/dbeaver"
-WORK_OPENJDK64_BIN="/usr/lib/jvm/java-1.6.0-openjdk-amd64/bin"
-JAVA_HOME="/usr/lib/jvm/java-6-openjdk-amd64/"
-PATH=${PATH}":${WORK_MAVEN_BIN}:${WORK_DBEAVER_BIN}:${WORK_OPENJDK64_BIN}"
-
-CSLOCAL="${HOME}/Work/CS/local"
-WOSRC="${HOME}/Work/CS/workspace/webonyx"
-TOM="${HOME}/Work/CS/local/apache-tomcat-7.0.41-netbeans/apache-tomcat-7.0.41"
-
+WMGDIR=${HOME}/Work/WMG
+PATH=${PATH}":${WMGDIR}/android-sdk-linux/tools"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
