@@ -86,8 +86,18 @@ globalkeys = awful.util.table.join(
               end),
 
     -- Dropdown terminal
-    awful.key({ modkey            }, "o",      function () scratch.drop("xterm -bg '#212121' -ls -e 'tmux'","bottom","center",1,0.4) end),
-    awful.key({ modkey, "Shift"   }, "o",      function () scratch.drop("gnome-terminal","bottom","center",1,0.5) end)
+    -- 24/02/2015 - Replace with the usage of terminator
+    -- awful.key({ modkey            }, "o",      function () scratch.drop("xterm -bg '#212121' -ls -e 'tmux'","bottom","center",1,0.4) end),
+    awful.key({ modkey, "Shift"   }, "o",      function () scratch.drop("gnome-terminal","bottom","center",1,0.5) end),
+    awful.key({ modkey,           }, "p",
+              function () 
+                  cheeky.util.switcher({
+                      coords = { x = 100, y = 1000 },   -- default: the mouse's coordinates
+                      hide_notification = false,   -- default: true
+                      notification_text = "NOPE",  -- default: "No matches. Resetting"
+                      notification_timeout = 5     -- default: 1
+                    }) 
+              end)
 )
 
 clientkeys = awful.util.table.join(
