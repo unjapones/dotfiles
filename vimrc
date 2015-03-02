@@ -1,23 +1,38 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 " Pathogen initial setup
 execute pathogen#infect()
 " List of plugins installed:
-" ----COLORSCHEMES----
-" badwolf
-" gruvbox
-" iceberg.vim
-" molokai
-" vim-hemisu
-" ----SYNTAX----
-" vim-javascript
-" vim-javascript-syntax
-" vim-less
-" ----FILE BROWSING/OPENING----
-" ctrlp.vim
-" nerdtree
-" ----MOTION----
-" vim-easymotion
-" ----SESSION----
-" vim-obsession
+" ------------------------------------------
+" ---------- PLUGIN MANAGEMENT -------------
+" ------------------------------------------
+" vim-pathogen		https://github.com/tpope/vim-pathogen
+" -------------------------------------
+" ---------- COLORSCHEMES -------------
+" -------------------------------------
+" badwolf		https://github.com/sjl/badwolf.git
+" gruvbox		https://github.com/morhetz/gruvbox.git
+" iceberg.vim		https://github.com/cocopon/iceberg.vim.git
+" molokai		https://github.com/tomasr/molokai.git
+" vim-hemisu		https://github.com/noahfrederick/vim-hemisu.git
+" -------------------------------
+" ---------- SYNTAX -------------
+" -------------------------------
+" vim-javascript	https://github.com/pangloss/vim-javascript.git
+" vim-javascript-syntax	https://github.com/jelera/vim-javascript-syntax.git
+" vim-less		https://github.com/groenewege/vim-less.git
+" ---------------------------------------------
+" ---------- FILE BROWSING/OPENING -------------
+" ---------------------------------------------
+" ctrlp.vim		https://github.com/kien/ctrlp.vim.git
+" nerdtree 		https://github.com/scrooloose/nerdtree.git
+" -------------------------------
+" ---------- MOTION -------------
+" -------------------------------
+" vim-easymotion 	https://github.com/Lokaltog/vim-easymotion.git
+" --------------------------------
+" ---------- SESSION -------------
+" --------------------------------
+" vim-obsession		https://github.com/tpope/vim-obsession.git
 
 syntax on
 filetype plugin indent on
