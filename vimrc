@@ -53,6 +53,11 @@ colorscheme molokai
 " some ignored options
 set wildmenu
 set wildignore=*.o,*~,*.pyc
+" Turn off case sensitive search
+set ignorecase
+" When the sensitive search is off alongside with smartcase (on), the search
+" the search will be case insensitive unless it contains an uppercase letter
+set smartcase
 
 
 " Display line numbers, highlight current line nd always show current position
