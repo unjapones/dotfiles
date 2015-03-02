@@ -1,6 +1,7 @@
 ###################################################################################################
 # Useful enviromental variables
 ###################################################################################################
+NERD="${HOME}/Nerd/"
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
 PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
@@ -17,9 +18,8 @@ alias 'grep=grep -n --color=auto';
 alias 'makemeroot=sudo bash -ls';
 alias 'mysqlroot=mysql -u root -p --default-character-set=utf8';
 alias 'mynautilus=nautilus --no-desktop';
-alias 'copywar=cp $HOME/.m2/repository/com/intercall/webonyx/webonyx/1.4-RELEASE/webonyx-1.4-RELEASE.war';
-alias 'mvninstall=mvn clean install -Dmaven.test.skip=true -Dmaven.compiler.debug=true';
-alias 'mvninstalltest=mvn clean install -Dmaven.compiler.debug=true';
+# Start vim tracking the session (note that the plugin "Obsession" from Tim Pope is recommended)
+alias 'vims=vim -S Session.vim';
 
 
 ###################################################################################################
@@ -40,9 +40,9 @@ CLLGREY="\[\033[1;37m\]" # for user if whoami outputs something other than 'root
 CLSYS="\[\033[0;0m\]"    # set the text after the prompt to the color defined in the terminal profile
 if [ `/usr/bin/whoami` = 'root' ]
 then
-    export PS1="$CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN] : $CLSYS"
+    export PS1="$CLPURP\u$CLPURPLE@$CLGREEN\h[$CLBLUE\w$CLGREEN # $CLSYS"
 else
-    export PS1="$CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN : $CLSYS"
+    export PS1="$CLGREEN\u$CLPURPLE@$CLGREEN\h $CLBLUE\w$CLGREEN $ $CLSYS"
 fi
 
 
