@@ -26,7 +26,9 @@ XTerm*faceSize:         12,7
 *xterm*cursorColor: #75715e
 !*xterm*background: #212121
 ! From Dracula color scheme https://github.com/zenorocha/dracula-theme
-*xterm*background: #282a36
+!*xterm*background: #282a36
+! From Monokai color scheme
+*xterm*background: #272822
 *xterm*foreground: #dcdcdc
 ! ======================================
 ! Molokai: https://gist.github.com/845878
