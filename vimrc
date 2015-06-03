@@ -55,10 +55,11 @@ set t_Co=256
 let g:rehash256 = 1
 set background=dark
 let g:molokai_original = 1
-colorscheme molokai
+"colorscheme molokai
 "let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 "colorscheme badwolf
+colorscheme solarized
 
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
@@ -84,7 +85,7 @@ set laststatus=2
 " current window in the tab has been modified)
 set guitablabel=%N/\ %t\ %M
 " Show line endings
-set list
+"set list
 
 
 " CtrlP plugin configuration needed (check the readme of the plugin)
