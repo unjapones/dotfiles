@@ -12,27 +12,41 @@
   new_tab = <Super>t
 [profiles]
   [[default]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    palette = "#000000:#ff0000:#38de21:#ffe50a:#1460d2:#ff005d:#00bbbb:#bbbbbb:#555555:#f40e17:#3bd01d:#edc809:#5555ff:#ff55ff:#6ae3fa:#ffffff"
     login_shell = True
     background_image = None
     background_darkness = 0.63
     use_system_font = False
-    cursor_color = "#eee8d5"
-    foreground_color = "#eee8d5"
+    cursor_color = "#f0cc09"
+    foreground_color = "#ffffff"
     show_titlebar = False
-    font = Input Mono Compressed Medium Extra-Condensed 11.400390625
-    background_color = "#002b36"
+    font = Ubuntu Mono for Powerline 12.400390625
+    background_color = "#132738"
+    scrollback_infinite = True
+  [[tomorrow]]
+    palette = "#000000:#c82829:#718c00:#f5871f:#4271ae:#8959a8:#3e999f:#8e908c:#d6d6d6:#ff3334:#9ec400:#eab700:#5795e6:#b777e0:#54ced6:#efefef"
+    login_shell = True
+    background_image = None
+    urgent_bell = True
+    use_system_font = False
+    cursor_color = "#f0cc09"
+    foreground_color = "#4d4d4c"
+    show_titlebar = False
+    font = Ubuntu Mono for Powerline 12.4
+    background_color = "#eeeeee"
+    scrollback_infinite = True
   [[quake]]
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    palette = "#000000:#ff0000:#38de21:#ffe50a:#1460d2:#ff005d:#00bbbb:#bbbbbb:#555555:#f40e17:#3bd01d:#edc809:#5555ff:#ff55ff:#6ae3fa:#ffffff"
     login_shell = True
     background_image = None
     background_darkness = 0.63
     use_system_font = False
-    cursor_color = "#eee8d5"
-    foreground_color = "#eee8d5"
+    cursor_color = "#f0cc09"
+    foreground_color = "#ffffff"
     show_titlebar = False
-    font = Input Mono Compressed Medium Extra-Condensed 11.400390625
-    background_color = "#002b36"
+    font = Ubuntu Mono for Powerline 12
+    background_color = "#132738"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
