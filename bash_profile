@@ -1,10 +1,15 @@
 ###################################################################################################
 # Useful enviromental variables
 ###################################################################################################
+# Bash history config
+HISTSIZE=3000
+HISTFILESIZE=8000
+# Path env variables
 NERD="${HOME}/Nerd/"
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
 PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
+# 256 terminal color config
 TERM=screen-256color
 
 
@@ -14,12 +19,24 @@ TERM=screen-256color
 alias 'ls=ls -a --color';
 alias 'll=ls -l';
 alias 'tree=tree -C';
-alias 'grep=grep -n --color=auto';
+alias 'grep=grep -i --color=auto';
 alias 'makemeroot=sudo bash -ls';
 alias 'mysqlroot=mysql -u root -p --default-character-set=utf8';
 alias 'mynautilus=nautilus --no-desktop';
 # Start vim tracking the session (note that the plugin "Obsession" from Tim Pope is recommended)
 alias 'vims=vim -S Session.vim';
+alias 'notes=vim ${HOME}/Escritorio/notas';
+alias 'nerdnotes=vim ${HOME}/Nerd/notes';
+alias 'nr=sudo rm -rf /tmp/nginx && sudo service nginx restart';
+alias 'a=atom';
+alias 'sapt=sudo apt-get';
+alias 'ydl=youtube-dl --rate-limit 75K';
+alias 'tmux=TERM=xterm-256color /usr/bin/tmux';
+
+# Opens the given editor (1st param) with the results of grep (2nd param)
+function grepedit(){
+  $1 $(grep -Ril $2 *);
+}
 
 
 ###################################################################################################
@@ -56,9 +73,6 @@ _JAVA_AWT_WM_NONREPARENTING=1
 
 
 ###################################################################################################
-# Work settings
+# Misc stuff
 ###################################################################################################
-WMGDIR=${HOME}/Work/WMG
-PATH=${PATH}":${WMGDIR}/android-sdk-linux/tools"
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
