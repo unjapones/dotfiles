@@ -45,8 +45,8 @@ filetype plugin indent on
 
 " Use white spaces instead of hard tab for identation
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 
 
 " Setup colorscheme
@@ -54,12 +54,17 @@ set softtabstop=4
 set t_Co=256
 let g:rehash256 = 1
 set background=dark
-let g:molokai_original = 1
+"set background=light
+"let g:molokai_original = 1
 "colorscheme molokai
+"colorscheme Tomorrow
+colorscheme Tomorrow-Night-Eighties
 "let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 "colorscheme badwolf
-colorscheme solarized
+"colorscheme solarized
+"colorscheme hemisu
+"colorscheme Tomorrow-Night-Bright
 
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
@@ -120,12 +125,26 @@ let g:airline_powerline_fonts = 1
 " Remap <Leader> from \ to ,
 let mapleader = ","
 " Press F8 to toggle highlighting on/off, and show current value.
+noremap <F7> :set list! list?<CR>
 noremap <F8> :set hlsearch! hlsearch?<CR>
 " Next & Previous tab mappings
 noremap <C-n> :tabprevious<CR>
 noremap <C-m> :tabnext<CR>
+" opens search results in a window w/ links and highlight the matches
+command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude *.{node_modules,vendor,\.git} . -e <args>' | copen | execute 'silent /<args>'
+" shift-control-* Greps for the word under the cursor
+:nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
 
 " Press F9 to toggle NerdTree
 noremap <F9> :NERDTreeToggle<CR>
+
+" Configure vim-multiple-cursors mapping
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_key='<c-l>'
+let g:multi_cursor_next_key='<c-l>'
+let g:multi_cursor_prev_key='<c-h>'
+let g:multi_cursor_skip_key='<c-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
 " CtrlP mapping and custom ignore options
 let g:ctrlp_map = '<c-p>'
