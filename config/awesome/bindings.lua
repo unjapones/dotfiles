@@ -32,6 +32,7 @@ globalkeys = awful.util.table.join(
             if client.focus then client.focus:raise() end
         end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
+    awful.key({ modkey, "Shift"}, "w",      function () awful.util.spawn("gnome-screensaver-command -l") end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -56,12 +57,16 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "s",      function () awful.util.spawn("amixer set Capture toggle") end),
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn("terminator -p tomorrow") end),
     --awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn("gnome-terminal") end),
     awful.key({ modkey,           }, "e",      function () awful.util.spawn("nautilus") end),
     --awful.key({ modkey,           }, "i",      function () awful.util.spawn("gnome-screenshot -i -a") end),
     --awful.key({ modkey, "Shift"   }, "b",      function () awful.util.spawn("awsetbg -a -r /home/japones/Imágenes/walls20") end),
     --awful.key({ modkey, "Shift"   }, "i",      function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Control" }, "i",      function () awful.util.spawn("luakit") end),
+    awful.key({  }, "XF86MonBrightnessUp",      function () awful.util.spawn("xbacklight -inc 10") end),
+    awful.key({  }, "XF86MonBrightnessDown",      function () awful.util.spawn("xbacklight -dec 10") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -83,21 +88,13 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end),
+              end)
 
     -- Dropdown terminal
     -- 24/02/2015 - Replace with the usage of terminator
+    -- awful.key({ modkey            }, "o",      function () scratch.drop("terminator -H -l bottom","bottom","center",1,0.4) end),
     -- awful.key({ modkey            }, "o",      function () scratch.drop("xterm -bg '#212121' -ls -e 'tmux'","bottom","center",1,0.4) end),
-    -- awful.key({ modkey, "Shift"   }, "o",      function () scratch.drop("gnome-terminal","bottom","center",1,0.5) end),
-    awful.key({ modkey,           }, "p",
-              function () 
-                  cheeky.util.switcher({
-                      coords = { x = 100, y = 1000 },   -- default: the mouse's coordinates
-                      hide_notification = false,   -- default: true
-                      notification_text = "NOPE",  -- default: "No matches. Resetting"
-                      notification_timeout = 5     -- default: 1
-                    }) 
-              end)
+    -- awful.key({ modkey, "Shift"   }, "o",      function () scratch.drop("gnome-terminal","bottom","center",1,0.5) end)
 )
 
 clientkeys = awful.util.table.join(
