@@ -73,18 +73,6 @@ _JAVA_AWT_WM_NONREPARENTING=1
 
 
 ###################################################################################################
-# Work settings
-###################################################################################################
-PATH=${PATH}":${WMGDIR}/android-sdk-linux/tools"
-
-BINA=${HOME}/Work/bina
-BINAGMS=${BINA}/code/seqalto/portal/site/src/gms
-alias 'binanotes=vim ${BINA}/notes';
-alias 'binaportal=cd ${BINA}/code/seqalto/portal/site';
-alias 'binagms=cd ${BINA}/code/seqalto/portal/site/src/gms';
-
-
-###################################################################################################
 # Misc stuff
 ###################################################################################################
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
