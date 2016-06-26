@@ -45,8 +45,8 @@ filetype plugin indent on
 
 " Use white spaces instead of hard tab for identation
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 
 
 " Setup colorscheme
@@ -54,12 +54,15 @@ set softtabstop=4
 set t_Co=256
 let g:rehash256 = 1
 set background=dark
+"set background=light
 let g:molokai_original = 1
 "colorscheme molokai
 "let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 "colorscheme badwolf
-colorscheme solarized
+"colorscheme solarized
+"colorscheme hemisu
+colorscheme onedark
 
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
@@ -93,8 +96,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_cmd = 'CtrlP'
 " CtrlP custom ignore options
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor)$',
-    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components)$',
+    \ 'file': '\v\.(exe|so|dll|map)$',
     \ 'link': 'some_bad_symbolic_links'
     \ }
 
@@ -105,11 +108,11 @@ let g:ctrlp_custom_ignore = {
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode='active'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_mode='active'
 
 
 " Airline pluiginconfig
@@ -129,3 +132,10 @@ noremap <C-m> :tabnext<CR>
 noremap <F9> :NERDTreeToggle<CR>
 " CtrlP mapping and custom ignore options
 let g:ctrlp_map = '<c-p>'
+
+
+"""""""""""""""""""""""""""""
+" File types specific configs
+"""""""""""""""""""""""""""""
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
