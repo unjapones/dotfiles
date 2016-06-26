@@ -87,7 +87,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", height = "16", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = "30", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -102,7 +102,7 @@ for s = 1, screen.count() do
         memwidget,
         thermalwidget,
         wifiupdownwidget,
-        s == 1 and mysystray or nil,
+        mysystray,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
