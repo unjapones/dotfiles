@@ -26,6 +26,7 @@ alias 'mplayer-slow3=mplayer -fps 23.976';
 alias 'awesomeconfig=cd ${HOME}/.config/awesome && vim';
 alias 'cdnerd=cd ${NERD}';
 alias 'gitchangedfiles=git diff --name-status';
+alias 'gitfilesincommit=git show --pretty="" --name-only';
 alias 'nr=sudo service nginx restart';
 
 ######################
@@ -54,7 +55,7 @@ function git_branch {
 # 2 line prompt:
 # PWD [(git_branch)]
 # →_
-PS1="${CLBLUE}\w${YELLOW}\$(git_branch)\n${CLPURP}→ ${CLSYS}";
+PS1="\n${CLBLUE}\w${YELLOW}\$(git_branch)\n${CLPURP}→ ${CLSYS}";
 
 ################
 # Other settings
@@ -82,3 +83,9 @@ if [ -e $BASH_PROFILE_WORK_PATH ]
 then
   . $BASH_PROFILE_WORK_PATH
 fi
+
+#####
+# nvm
+#####
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
