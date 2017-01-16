@@ -12,6 +12,7 @@
 * git
 * gitg
 * clipit
+* xsel
 
 *Manual install*
 * slack
@@ -34,6 +35,7 @@
 * deadbeef
 * synergy
 * deadbeef http://deadbeef.sourceforge.net/
+* indicator-multiload
 
 # Nerd
 
