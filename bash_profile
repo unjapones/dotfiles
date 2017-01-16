@@ -10,6 +10,8 @@ TERM=screen-256color
 #########
 # Aliases
 #########
+alias 'editbashprofile=vim ${HOME}/.bash_profile';
+alias 'nr=sudo service nginx restart';
 alias 'ls=ls -a --color';
 alias 'll=ls -l';
 alias 'tree=tree -C';
