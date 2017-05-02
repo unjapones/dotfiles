@@ -12,7 +12,7 @@ TERM=screen-256color
 #########
 alias 'editbashprofile=vim ${HOME}/.bash_profile';
 alias 'nr=sudo service nginx restart';
-alias 'ls=ls -a --color';
+alias 'ls=ls -a --color --group-directories-first';
 alias 'll=ls -l';
 alias 'tree=tree -C';
 alias 'grep=grep -n --color=auto';
@@ -51,13 +51,13 @@ WHITE=$(tput setaf 7)
 
 function git_branch {
   # Shows the current branch if in a git repository
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \(\1\)/';
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/';
 }
 
 # 2 line prompt:
 # PWD [(git_branch)]
 # →_
-PS1="\n${CLBLUE}\w${YELLOW}\$(git_branch)\n${CLPURP}→ ${CLSYS}";
+PS1="\n${YELLOW}\$(git_branch)${CLBLUE}\w\n${CLPURP}→ ${CLSYS}";
 
 ################
 # Other settings
