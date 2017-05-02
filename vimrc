@@ -60,9 +60,9 @@ let g:molokai_original = 1
 "let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 "colorscheme badwolf
-"colorscheme solarized
+colorscheme solarized
 "colorscheme hemisu
-colorscheme onedark
+"colorscheme onedark
 
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
