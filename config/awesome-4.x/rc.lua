@@ -363,17 +363,25 @@ globalkeys = awful.util.table.join(
   --awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end),
   --awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end),
 
+  -- @TODO: add maps to control Spotify/Deadbeef:
+  -- https://gist.github.com/mikaelz/b85c8d97fcee55c33b88
   -- ALSA volume control
-  --awful.key({ altkey }, "Up",
-  --    function ()
-  --        os.execute(string.format("amixer set %s 1%%+", beautiful.volume.channel))
-  --        beautiful.volume.update()
-  --    end),
-  --awful.key({ altkey }, "Down",
-  --    function ()
-  --        os.execute(string.format("amixer set %s 1%%-", beautiful.volume.channel))
-  --        beautiful.volume.update()
-  --    end),
+  awful.key({  }, "XF86AudioRaiseVolume",
+    function ()
+      --os.execute(string.format("amixer -c 1 set %s 1%%+", beautiful.volume.channel))
+      os.execute(string.format("amixer -c 1 set Master 3dB+", beautiful.volume.channel))
+      beautiful.volume.update()
+    end),
+  awful.key({  }, "XF86AudioLowerVolume",
+    function ()
+      os.execute(string.format("amixer -c 1 set Master 3dB-", beautiful.volume.channel))
+      beautiful.volume.update()
+    end),
+  awful.key({  }, "XF86AudioMute",
+    function ()
+      os.execute(string.format("amixer -c 1 set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+      beautiful.volume.update()
+    end),
   --awful.key({ altkey }, "m",
   --    function ()
   --        os.execute(string.format("amixer set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
