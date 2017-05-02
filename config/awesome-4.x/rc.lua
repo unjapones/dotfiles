@@ -294,6 +294,9 @@ globalkeys = awful.util.table.join(
       end
     end,
     {description = "go back", group = "client"}),
+  awful.key({ modkey,           }, "u", function()
+    local cmenu = awful.menu.clients({ theme = { width = 550 } })
+  end),
 
   -- Show/Hide Wibox
   awful.key({ modkey }, "b", function ()
@@ -395,7 +398,7 @@ globalkeys = awful.util.table.join(
 
   -- User programs
   awful.key({ modkey }, "e", function () awful.spawn(filebrowser) end),
-  awful.key({ modkey }, "q", function () awful.spawn(browser) end),
+  --awful.key({ modkey }, "q", function () awful.spawn(browser) end),
 
   -- Default
   --[[ Menubar
