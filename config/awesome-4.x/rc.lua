@@ -549,7 +549,7 @@ awful.rules.rules = {
       properties = { screen = 1, tag = screen[1].tags[4] } },
 
     { rule = { class = "Nautilus", instance = "desktop_window" },
-      properties = { sticky = true } },
+      properties = { sticky = true, border_width = 0 } },
 
     { rule = { class = "Plank" },
       properties = { border_width = 0, ontop = true, floating = true } },
