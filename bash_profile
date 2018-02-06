@@ -91,3 +91,14 @@ fi
 #####
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# Automatic version switch on cd
+cd() {
+  builtin cd "$@"
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use --silent
+  elif [[ `nvm current` != `nvm version default` ]]; then
+    nvm use --silent default
+  fi
+}
+cd .
+
