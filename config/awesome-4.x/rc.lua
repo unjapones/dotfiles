@@ -64,12 +64,12 @@ local function run_once(cmd_arr)
 end
 
 --run_once({ "urxvtd", "unclutter -root" })
-run_once({ "/home/topones8/Nerd/repost/dotfiles/awesome-apps.sh" })
-run_once({ "/home/topones8/Nerd/repost/dotfiles/awesome-apps.sh" })
+--run_once({ "/home/topones8/Nerd/repost/dotfiles/awesome-apps.sh" })
+--run_once({ "/home/topones8/Nerd/repost/dotfiles/awesome-apps.sh" })
 -- }}}
 
 -- {{{ Variable definitions
-local chosen_theme = "powerarrow-darker"
+local chosen_theme = "powerarrow-dark"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "terminator" or "xterm"
@@ -217,7 +217,7 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
   -- Take a screenshot
   -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-  awful.key({ altkey }, "p", function() os.execute("screenshot") end),
+  --awful.key({ altkey }, "p", function() os.execute("screenshot") end),
 
   -- Hotkeys
   awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -295,7 +295,11 @@ globalkeys = awful.util.table.join(
     end,
     {description = "go back", group = "client"}),
   awful.key({ modkey,           }, "u", function()
-    local cmenu = awful.menu.clients({ theme = { width = 550 } })
+    local cmenu = awful.menu.clients({ theme = { height = 48, width = 750 }, coords = { x = 30, y = 30 } })
+
+  end),
+  awful.key({ modkey, "Shift" }, "u", function()
+    lain.util.menu_clients_current_tags({ height = 48, width = 750 }, { keygrabber = true })
   end),
 
   -- Show/Hide Wibox
@@ -559,7 +563,13 @@ awful.rules.rules = {
     { rule = { class = "Nautilus", instance = "desktop_window" },
       properties = { sticky = true, border_width = 0 } },
 
-    { rule = { class = "Plank" },
+    { rule_any = { class = { "Plank" } },
+      properties = { border_width = 0, ontop = true, floating = true } },
+
+    { rule_any = { class = { "Synapse", "mysynapse", "synapse" } },
+      properties = { border_width = 0, ontop = true, floating = true } },
+
+    { rule = { class = "albert" },
       properties = { border_width = 0, ontop = true, floating = true } },
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
@@ -640,14 +650,14 @@ end)
 --end)
 
 -- No border for maximized clients
-client.connect_signal("focus",
-  function(c)
-    if c.maximized then -- no borders if only 1 client visible
-      c.border_width = 0
-    elseif #awful.screen.focused().clients > 1 then
-      c.border_width = beautiful.border_width
-      c.border_color = beautiful.border_focus
-    end
-  end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+--client.connect_signal("focus",
+  --function(c)
+    --if c.maximized then -- no borders if only 1 client visible
+      --c.border_width = 0
+    --elseif #awful.screen.focused().clients > 1 then
+      --c.border_width = beautiful.border_width
+      --c.border_color = beautiful.border_focus
+    --end
+  --end)
+--client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
