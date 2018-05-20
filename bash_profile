@@ -2,6 +2,7 @@
 # Env variables
 ###############
 NERD="${HOME}/Nerd/"
+WORK="${HOME}/Work/"
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
 PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
@@ -26,10 +27,17 @@ alias 'notes=vim ${HOME}/Escritorio/notes.md';
 alias 'youtube-dl-mp3=youtube-dl --extract-audio --audio-format mp3';
 alias 'mplayer-slow3=mplayer -fps 23.976';
 alias 'awesomeconfig=cd ${HOME}/.config/awesome && vim';
+alias 'xephyr=Xephyr :1 -ac -br -screen 1152x720 &';
+alias 'awesomexephyr=DISPLAY=:1.0 awesome -c ~/.config/awesome/rc.lua';
 alias 'cdnerd=cd ${NERD}';
+alias 'cdwork=cd ${WORK}';
 alias 'gitchangedfiles=git diff --name-status';
 alias 'gitfilesincommit=git show --pretty="" --name-only';
 alias 'nr=sudo service nginx restart';
+# Usage: gitlogdiff master..BRANCH2
+alias "gitlogdiff=git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
+# Usage: gitfilesdiff master..BRANCH2 (or just "master" will assume current branch is BRANCH 2)
+alias "gitfilesdiff=git diff --name-status";
 
 ######################
 # Prompt Customization
