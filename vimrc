@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 
+Plug 'tomlion/vim-solidity'
 Plug 'junegunn/vim-easy-align'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -15,17 +16,35 @@ Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-obsession.git'
 Plug 'https://github.com/bling/vim-airline.git'
 Plug 'https://github.com/Raimondi/delimitMate.git'
+Plug 'https://github.com/Raimondi/delimitMate.git'
+"Plug 'https://github.com/vim-scripts/ack.vim.git'
+Plug 'https://github.com/epmatsw/ag.vim.git'
 
 " Colorschemes
 Plug 'https://github.com/morhetz/gruvbox.git'
 Plug 'https://github.com/sjl/badwolf.git'
 Plug 'https://github.com/noahfrederick/vim-hemisu.git'
+Plug 'lifepillar/vim-solarized8'
+Plug 'sheerun/vim-polyglot'
+Plug 'trevordmiller/nova-vim'
+Plug 'https://github.com/rakr/vim-one.git'
+Plug 'https://github.com/arcticicestudio/nord-vim.git'
+Plug 'chriskempson/base16-vim'
+Plug 'https://github.com/sheerun/vim-wombat-scheme.git'
 
+" Others
+Plug 'jparise/vim-graphql'
 
 " Initialize plugin system
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Fix true-color color schemes (from solarized8)
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 syntax on
 filetype plugin indent on
@@ -37,18 +56,23 @@ set softtabstop=2
 
 " Setup colorscheme
 " Most of the colorschemes are 256 colors terminal ready
-set t_Co=256
-let g:rehash256 = 1
+"set t_Co=256
+"let g:rehash256 = 1
 set background=dark
 "set background=light
 let g:molokai_original = 1
 "colorscheme molokai
 "let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+"colorscheme gruvbox
 "colorscheme badwolf
-"colorscheme solarized
+"colorscheme solarized8_dark
+colorscheme solarized8
+"colorscheme nova
 "colorscheme hemisu
-"colorscheme onedark
+"colorscheme one
+"colorscheme nord
+"colorscheme base16-outrun-dark
+"colorscheme wombat
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
 " some ignored options
@@ -61,6 +85,8 @@ set ignorecase
 set smartcase
 " Highlight the search result as the search is being specified
 set incsearch
+" Refresh any files
+set autoread
 
 
 " Display line numbers, highlight current line nd always show current position
@@ -118,6 +144,10 @@ let g:ctrlp_custom_ignore = {
  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " Notification after file change
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-  echohl WarningMsg | echo "File changed on disk. Buffer reloaded." |
-  echohl None
+"autocmd FileChangedShellPost *
+  "echohl WarningMsg | echo "File changed on disk. Buffer reloaded." |
+  "echohl None
+
+" bind \ (backward slash) to grep shortcut
+"command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+

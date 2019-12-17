@@ -5,7 +5,8 @@ NERD="${HOME}/Nerd/"
 WORK="${HOME}/Work/"
 DOTFILES_LOCAL_BIN="${HOME}/Nerd/repos/dotfiles/local/bin"
 AWESOME_BIN_PATH=${HOME}/.config/awesome/bin
-PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}"
+LOCAL_BIN_PATH=${HOME}/.local/bin
+PATH=${PATH}":${DOTFILES_LOCAL_BIN}:${AWESOME_BIN_PATH}:${LOCAL_BIN_PATH}"
 TERM=screen-256color
 
 #########
@@ -24,7 +25,7 @@ alias 'editnr=sudo vim /etc/nginx/nginx.conf && nr';
 # Start vim tracking the session (note that the plugin "Obsession" from Tim Pope is recommended)
 alias 'vims=vim -S Session.vim';
 alias 'notes=vim ${HOME}/Escritorio/notes.md';
-alias 'youtube-dl-mp3=youtube-dl --extract-audio --audio-format mp3';
+alias 'youtube-dl-mp3=/usr/local/bin/youtube-dl --extract-audio --audio-format mp3';
 alias 'mplayer-slow3=mplayer -fps 23.976';
 alias 'awesomeconfig=cd ${HOME}/.config/awesome && vim';
 alias 'xephyr=Xephyr :1 -ac -br -screen 1152x720 &';
@@ -38,6 +39,9 @@ alias 'nr=sudo service nginx restart';
 alias "gitlogdiff=git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative";
 # Usage: gitfilesdiff master..BRANCH2 (or just "master" will assume current branch is BRANCH 2)
 alias "gitfilesdiff=git diff --name-status";
+alias "mousezurdo=xmodmap -e 'pointer = 1 2 3'";
+alias "mousediestro=xmodmap -e 'pointer = 3 2 1'";
+alias "gnome-control-center-awesome=env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
 
 ######################
 # Prompt Customization

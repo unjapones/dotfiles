@@ -77,9 +77,12 @@ local editor       = os.getenv("EDITOR") or "vim" or "nano"
 local gui_editor   = "subl"
 local browser      = "google-chrome"
 local filebrowser  = "nautilus"
+local rofi_apps    = "rofi -modi drun -show drun -font 'Ubuntu Mono 17' -theme Pop-Dark"
+local rofi_window  = "rofi -modi window -show window -font 'Ubuntu Mono 17' -theme Pop-Dark"
+local lock_screen  = "gnome-screensaver-command -l"
 
 awful.util.terminal = terminal
-awful.util.tagnames = { "1", "2", "3", "4" }
+awful.util.tagnames = { "1", "2", "3", "4", "5" }
 awful.layout.layouts = {
   awful.layout.suit.floating,
   awful.layout.suit.tile,
@@ -183,6 +186,7 @@ awful.util.mymainmenu = freedesktop.menu.build({
   after = {
     { "Open terminal", terminal },
     -- other triads can be put here
+    { "Lock screen", lock_screen },
   }
 })
 --menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
@@ -190,17 +194,18 @@ awful.util.mymainmenu = freedesktop.menu.build({
 
 -- {{{ Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", function(s)
+-- screen.connect_signal("property::geometry", function(s)
   -- Wallpaper
-  if beautiful.wallpaper then
-    local wallpaper = beautiful.wallpaper
+  -- if beautiful.wallpaper then
+    -- local wallpaper = beautiful.wallpaper
     -- If wallpaper is a function, call it with the screen
-    if type(wallpaper) == "function" then
-      wallpaper = wallpaper(s)
-    end
-    gears.wallpaper.maximized(wallpaper, s, true)
-  end
-end)
+    -- if type(wallpaper) == "function" then
+      -- wallpaper = wallpaper(s)
+    -- end
+    -- gears.wallpaper.maximized(wallpaper, s, true)
+    -- gears.wallpaper.maximized(wallpaper, s, false)
+  -- end
+-- end)
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
 -- }}}
@@ -284,7 +289,7 @@ globalkeys = awful.util.table.join(
             {description = "focus the next screen", group = "screen"}),
   awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
             {description = "focus the previous screen", group = "screen"}),
-  awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
+  awful.key({ modkey, "Shift"   }, "u", awful.client.urgent.jumpto,
             {description = "jump to urgent client", group = "client"}),
   awful.key({ modkey,           }, "Tab",
     function ()
@@ -294,13 +299,12 @@ globalkeys = awful.util.table.join(
       end
     end,
     {description = "go back", group = "client"}),
-  awful.key({ modkey,           }, "u", function()
-    local cmenu = awful.menu.clients({ theme = { height = 48, width = 750 }, coords = { x = 30, y = 30 } })
-
-  end),
-  awful.key({ modkey, "Shift" }, "u", function()
-    lain.util.menu_clients_current_tags({ height = 48, width = 750 }, { keygrabber = true })
-  end),
+  --awful.key({ modkey,           }, "u", function()
+    --local cmenu = awful.menu.clients({ theme = { height = 48, width = 750 }, coords = { x = 30, y = 30 } })
+  --end),
+  --awful.key({ modkey, "Shift" }, "u", function()
+    --lain.util.menu_clients_current_tags({ height = 48, width = 750 }, { keygrabber = true })
+  --end),
 
   -- Show/Hide Wibox
   awful.key({ modkey }, "b", function ()
@@ -324,8 +328,19 @@ globalkeys = awful.util.table.join(
   awful.key({ modkey, "Shift" }, "d", function () lain.util.delete_tag() end),
 
   -- Standard program
+  awful.key({ modkey,           }, "y", function () awful.spawn(rofi_apps) end,
+            {description = "open rofi drun", group = "launcher"}),
+  awful.key({ modkey,           }, "u", function () awful.spawn(rofi_window) end,
+            {description = "open rofi window", group = "launcher"}),
+
   awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
             {description = "open a terminal", group = "launcher"}),
+  --awful.key({ modkey,           }, "e", function () awful.spawn(filebrowser) end,
+            --{description = "open nautilus", group = "launcher"}),
+  awful.key({ modkey,           }, "Print", function () awful.spawn("gnome-screenshot -a") end,
+            {description = "screenshot area", group = "launcher"}),
+  awful.key({ "Shift"           }, "Print", function () awful.spawn("gnome-screenshot -i") end,
+            {description = "screenshot interactive", group = "launcher"}),
   awful.key({ modkey, "Control" }, "r", awesome.restart,
             {description = "reload awesome", group = "awesome"}),
   awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -551,17 +566,21 @@ awful.rules.rules = {
       properties = { titlebars_enabled = false } },
 
     -- Set Firefox to always map on the first tag on screen 1.
-    { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = screen[1].tags[1] } },
+    --{ rule = { class = "Firefox" },
+      --properties = { screen = 1, tag = screen[1].tags[1] } },
 
-    { rule = { class = "Slack" },
+    -- { rule = { class = "Slack" },
+    { rule_any = { class = { "Slack", "Telegram" } },
+      properties = { screen = 1, tag = screen[1].tags[4], border_width = 0 } },
+
+    { rule = { class = "Google-chrome" },
+      properties = { border_width = 0, floating = true } },
+
+    { rule = { name = "Hangouts de Google: jlshirai@gmail.com" },
       properties = { screen = 1, tag = screen[1].tags[3] } },
 
-    { rule_any = { class = { "Spotify", "Deadbeef" } },
-      properties = { screen = 1, tag = screen[1].tags[4] } },
-
-    { rule = { class = "Nautilus", instance = "desktop_window" },
-      properties = { sticky = true, border_width = 0 } },
+    { rule_any = { class = { "Spotify", "Deadbeef", "Nautilus", "Terminator", "Firefox" } },
+      properties = { border_width = 0 } },
 
     { rule_any = { class = { "Plank" } },
       properties = { border_width = 0, ontop = true, floating = true } },
@@ -661,3 +680,5 @@ end)
   --end)
 --client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+awful.util.spawn("/home/topones1904/.local/bin/awesomethings.sh")
+awful.util.spawn("/home/topones1710/.local/bin/awesomethings.sh")
