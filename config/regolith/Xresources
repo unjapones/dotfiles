@@ -2,8 +2,8 @@ i3-wm.bar.position:	top
 i3-wm.bar.trayoutput:	primary
 gnome.gtk.theme:	Yaru
 gnome.icon.theme:	Yaru
-gnome.wallpaper:        /home/topones20/Pictures/walls/old/wall1.jpg
+gnome.wallpaper:        /home/topones10/Pictures/walls/DEFAULTWALL
 rofi.icon.theme:        Yaru
-rofi.font:              JetBrains Mono Regular 14
-rofi.theme:             /home/topones20/.config/regolith/styles/lascaille/rofi.rasi
+rofi.font:              JetBrains Mono Regular 15.4
+rofi.theme:             /home/topones10/.config/regolith/styles/lascaille/rofi.rasi
 
