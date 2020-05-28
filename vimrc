@@ -63,10 +63,10 @@ set background=dark
 let g:molokai_original = 1
 "colorscheme molokai
 "let g:gruvbox_contrast_dark='hard'
-"colorscheme gruvbox
+colorscheme gruvbox
 "colorscheme badwolf
 "colorscheme solarized8_dark
-colorscheme solarized8
+"colorscheme solarized8
 "colorscheme nova
 "colorscheme hemisu
 "colorscheme one
@@ -86,7 +86,7 @@ set smartcase
 " Highlight the search result as the search is being specified
 set incsearch
 " Refresh any files
-set autoread
+"set autoread
 
 
 " Display line numbers, highlight current line nd always show current position
