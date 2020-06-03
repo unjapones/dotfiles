@@ -1,1 +1,0 @@
-  sudo apt-get install awesome awesome-extra clipit ssh git openjdk-7-jdk vim mplayer gnome-mplayer meld tmux terminator compton lm-sensors chromium-browser gnome-tweak-tool mc tree qt4-qtconfig youtube-dl

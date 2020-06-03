@@ -1,2 +1,0 @@
-#!/bin/sh
-google-chrome --profile-directory="Default" --app=https://mail.google.com/mail/
