@@ -125,10 +125,6 @@ noremap <F8> :set hlsearch! hlsearch?<CR>
 " Next & Previous tab mappings
 noremap <C-n> :tabprevious<CR>
 noremap <C-m> :tabnext<CR>
-" opens search results in a window w/ links and highlight the matches
-command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude *.{node_modules,vendor,\.git} . -e <args>' | copen | execute 'silent /<args>'
-" shift-control-* Greps for the word under the cursor
-:nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
 
 " Press F9 to toggle NerdTree
 noremap <F9> :NERDTreeToggle<CR>
