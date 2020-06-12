@@ -1,4 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/junegunn/vim-plug
 " Installation command:
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -12,6 +11,7 @@ Plug 'tomlion/vim-solidity'
 Plug 'junegunn/vim-easy-align'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" @TODO: replace the following with https://github.com/ctrlpvim/ctrlp.vim
 Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-obsession.git'
 Plug 'https://github.com/bling/vim-airline.git'
@@ -34,15 +34,22 @@ Plug 'trevordmiller/nova-vim'
 Plug 'https://github.com/rakr/vim-one.git'
 Plug 'https://github.com/arcticicestudio/nord-vim.git'
 Plug 'chriskempson/base16-vim'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'https://github.com/rakr/vim-two-firewatch.git'
 
 " Others
 "Plug 'jparise/vim-graphql'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
 
-" JS
-Plug 'w0rp/ale'
-" Code completion/suggestion
+" JavaScript
+"Plug 'w0rp/ale'
+" TypeScript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
 
 " Initialize plugin system
 call plug#end()
@@ -71,20 +78,27 @@ set tabstop=2 shiftwidth=2 expandtab softtabstop=2   "tabs = 2 spaces
 " Most of the colorschemes are 256 colors terminal ready
 "set t_Co=256
 "let g:rehash256 = 1
-set background=dark
-"set background=light
-let g:molokai_original = 1
-"colorscheme molokai
+"set background=dark
+set background=light
 "let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+"colorscheme gruvbox
 "colorscheme badwolf
-"colorscheme solarized8_dark
 "colorscheme solarized8
 "colorscheme nova
 "colorscheme hemisu
 "colorscheme one
 "colorscheme nord
 "colorscheme base16-outrun-dark
+"colorscheme github
+"colorscheme base16-zenburn
+"colorscheme one
+"colorscheme base16-atelier-plateau-light
+"colorscheme base16-atelier-forest-light
+"colorscheme base16-atelier-lakeside-light
+"colorscheme base16-summerfruit-light
+colorscheme base16-material-palenight
+
+
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
 " some ignored options
@@ -146,7 +160,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_cmd = 'CtrlP'
 " CtrlP custom ignore options
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components)$',
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components/build/dist)$',
     \ 'file': '\v\.(exe|so|dll|map)$',
     \ 'link': 'some_bad_symbolic_links'
     \ }
@@ -166,12 +180,37 @@ let g:ctrlp_custom_ignore = {
 
 " ALE config
 " Set ESLint as plugging manager
-let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
+"let g:ale_fixers = {
+ "\ 'javascript': ['eslint']
+ "\ }
 "let g:ale_sign_error = '❌'
 "let g:ale_sign_warning = '⚠️'
+"Coc
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
+"""""""""""""""""""""""""""""
+" Cursor (terminator + tmux)
+" https://stackoverflow.com/questions/6488683/how-do-i-change-the-vim-cursor-in-insert-normal-mode/42118416#42118416
+"""""""""""""""""""""""""""""
+" Ps = 0  -> blinking block.
+" Ps = 1  -> blinking block (default).
+" Ps = 2  -> steady block.
+" Ps = 3  -> blinking underline.
+" Ps = 4  -> steady underline.
+" Ps = 5  -> blinking bar (xterm).
+" Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[1 q"
+" optional reset cursor on start:
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup END
 
 """""""""""""""""""""""""""""
 " File types specific configs
@@ -190,3 +229,8 @@ nmap     <C-F>n <Plug>CtrlSFCwordPath
 nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
+" Coc
+nnoremap <silent> K :call CocAction('doHover')<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
