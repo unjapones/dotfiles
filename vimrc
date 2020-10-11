@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-obsession.git'
 Plug 'https://github.com/bling/vim-airline.git'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/Raimondi/delimitMate.git'
 
 " Search plugins
@@ -36,6 +37,7 @@ Plug 'https://github.com/arcticicestudio/nord-vim.git'
 Plug 'chriskempson/base16-vim'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'https://github.com/rakr/vim-two-firewatch.git'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Others
 "Plug 'jparise/vim-graphql'
@@ -71,7 +73,8 @@ filetype plugin indent on
 "set softtabstop=2
 " OLD ABOVE
 set breakindent                                      "Mantain indent on wrapping lines
-set autoindent                                       "autoindent
+set linebreak                                        "break lines but on words
+"set autoindent                                       "autoindent
 set tabstop=2 shiftwidth=2 expandtab softtabstop=2   "tabs = 2 spaces
 
 " Setup colorscheme
@@ -79,31 +82,52 @@ set tabstop=2 shiftwidth=2 expandtab softtabstop=2   "tabs = 2 spaces
 "set t_Co=256
 "let g:rehash256 = 1
 "set background=dark
-set background=light
-"let g:gruvbox_contrast_dark='hard'
+"set background=light
+
+set background=dark
+let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
+"let g:airline_theme='violet'
+colorscheme dracula
+let g:airline_theme='dracula'
+let g:dracula_italic=0
+
 "colorscheme badwolf
 "colorscheme solarized8
+"colorscheme solarized8_flat
+"let g:airline_theme='solarized'
 "colorscheme nova
 "colorscheme hemisu
 "colorscheme one
 "colorscheme nord
 "colorscheme base16-outrun-dark
+
+"set background=light
 "colorscheme github
+"let g:airline_theme='sol'
+"let g:airline_theme='github'
+
 "colorscheme base16-zenburn
 "colorscheme one
+"colorscheme base16-atelier-cave-light
+"colorscheme base16-atelier-estuary
+"colorscheme base16-bespin
+"colorscheme base16-atelier-estuary-light
+"colorscheme base16-atlas
 "colorscheme base16-atelier-plateau-light
 "colorscheme base16-atelier-forest-light
 "colorscheme base16-atelier-lakeside-light
 "colorscheme base16-summerfruit-light
-colorscheme base16-material-palenight
+"colorscheme base16-atelier-sulphurpool-light
+"colorscheme base16-material-palenight
 
-
+" Set gutter bg color to match the line number color
+highlight! link SignColumn LineNr
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
 " some ignored options
 set wildmenu
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*.swp
 " Turn off case sensitive search
 set ignorecase
 " When the sensitive search is off alongside with smartcase (on), the search
@@ -122,6 +146,8 @@ set cursorline
 set ruler
 " Always show status bar (useful also for vim-airline)
 set laststatus=2
+" Display a nicer tab barline, supported by vim-airline
+let g:airline#extensions#tabline#enabled=1
 " Set tab label to show tab number, filename, if modified ('+' is shown if the
 " current window in the tab has been modified)
 set guitablabel=%N/\ %t\ %M
@@ -144,6 +170,8 @@ noremap <F9> :NERDTreeToggle<CR>
 " CtrlP mapping and custom ignore options
 let g:ctrlp_map = '<c-p>'
 let NERDTreeShowHidden=1
+" Nerdtree config for wildignore
+let NERDTreeRespectWildIgnore=1
 
 
 """""""""""""""""""""""""""""
