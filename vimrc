@@ -1,4 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/junegunn/vim-plug
 " Installation command:
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -12,9 +11,11 @@ Plug 'tomlion/vim-solidity'
 Plug 'junegunn/vim-easy-align'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" @TODO: replace the following with https://github.com/ctrlpvim/ctrlp.vim
 Plug 'https://github.com/kien/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-obsession.git'
 Plug 'https://github.com/bling/vim-airline.git'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/Raimondi/delimitMate.git'
 
 " Search plugins
@@ -34,15 +35,28 @@ Plug 'trevordmiller/nova-vim'
 Plug 'https://github.com/rakr/vim-one.git'
 Plug 'https://github.com/arcticicestudio/nord-vim.git'
 Plug 'chriskempson/base16-vim'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'https://github.com/rakr/vim-two-firewatch.git'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Rigellute/shades-of-purple.vim'
 
 " Others
 "Plug 'jparise/vim-graphql'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
 
-" JS
-Plug 'w0rp/ale'
-" Code completion/suggestion
+" JavaScript
+"Plug 'w0rp/ale'
+" TypeScript
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+
+" Version control
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'statico/vim-javascript-sql'
 
 " Initialize plugin system
 call plug#end()
@@ -71,25 +85,37 @@ set tabstop=2 shiftwidth=2 expandtab softtabstop=2   "tabs = 2 spaces
 " Most of the colorschemes are 256 colors terminal ready
 "set t_Co=256
 "let g:rehash256 = 1
-set background=dark
+"set background=dark
 "set background=light
-let g:molokai_original = 1
-"colorscheme molokai
 "let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+"colorscheme gruvbox
 "colorscheme badwolf
-"colorscheme solarized8_dark
 "colorscheme solarized8
 "colorscheme nova
 "colorscheme hemisu
 "colorscheme one
 "colorscheme nord
 "colorscheme base16-outrun-dark
+"colorscheme github
+"colorscheme base16-zenburn
+"colorscheme one
+"colorscheme base16-atelier-plateau-light
+"colorscheme base16-atelier-forest-light
+"colorscheme base16-atelier-lakeside-light
+"colorscheme base16-summerfruit-light
+" colorscheme base16-material-palenight
+"colorscheme dracula
+"let g:airline_theme='dracula'
+"let g:dracula_italic=0
+"let g:dracula_italic=0
+colorscheme shades_of_purple
+let g:shades_of_purple_airline = 1
+let g:airline_theme='shades_of_purple'
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
 " some ignored options
 set wildmenu
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*.swp
 " Turn off case sensitive search
 set ignorecase
 " When the sensitive search is off alongside with smartcase (on), the search
@@ -108,6 +134,9 @@ set cursorline
 set ruler
 " Always show status bar (useful also for vim-airline)
 set laststatus=2
+" Display a nicer tab barline, supported by vim-airline
+let g:airline#extensions#tabline#enabled=1
+"
 " Set tab label to show tab number, filename, if modified ('+' is shown if the
 " current window in the tab has been modified)
 set guitablabel=%N/\ %t\ %M
@@ -120,7 +149,6 @@ set colorcolumn=80
 " Remap <Leader> from \ to ,
 let mapleader = ","
 " Press F8 to toggle highlighting on/off, and show current value.
-noremap <F7> :set list! list?<CR>
 noremap <F8> :set hlsearch! hlsearch?<CR>
 " Next & Previous tab mappings
 noremap <C-n> :tabprevious<CR>
@@ -128,18 +156,29 @@ noremap <C-m> :tabnext<CR>
 
 " Press F9 to toggle NerdTree
 noremap <F9> :NERDTreeToggle<CR>
-
-" Configure vim-multiple-cursors mapping
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_key='<c-l>'
-let g:multi_cursor_next_key='<c-l>'
-let g:multi_cursor_prev_key='<c-h>'
-let g:multi_cursor_skip_key='<c-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 " CtrlP mapping and custom ignore options
 let g:ctrlp_map = '<c-p>'
 let NERDTreeShowHidden=1
+" Nerdtree config for wildignore
+let NERDTreeRespectWildIgnore=1
+
+" Allow mouse to select tab and buffer
+set mouse=a
+
+" Use persistent history.
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
+
+" last-position-jump*
+" This autocommand jumps to the last known position in a file
+" just after opening it, if the '" mark is set:
+:au BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
 
 
 """""""""""""""""""""""""""""
@@ -156,7 +195,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_cmd = 'CtrlP'
 " CtrlP custom ignore options
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components)$',
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components/build/dist)$',
     \ 'file': '\v\.(exe|so|dll|map)$',
     \ 'link': 'some_bad_symbolic_links'
     \ }
@@ -176,12 +215,37 @@ let g:ctrlp_custom_ignore = {
 
 " ALE config
 " Set ESLint as plugging manager
-let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
+"let g:ale_fixers = {
+ "\ 'javascript': ['eslint']
+ "\ }
 "let g:ale_sign_error = '❌'
 "let g:ale_sign_warning = '⚠️'
+"Coc
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
+"""""""""""""""""""""""""""""
+" Cursor (terminator + tmux)
+" https://stackoverflow.com/questions/6488683/how-do-i-change-the-vim-cursor-in-insert-normal-mode/42118416#42118416
+"""""""""""""""""""""""""""""
+" Ps = 0  -> blinking block.
+" Ps = 1  -> blinking block (default).
+" Ps = 2  -> steady block.
+" Ps = 3  -> blinking underline.
+" Ps = 4  -> steady underline.
+" Ps = 5  -> blinking bar (xterm).
+" Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[1 q"
+" optional reset cursor on start:
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[1 q"
+augroup END
 
 """""""""""""""""""""""""""""
 " File types specific configs
@@ -200,3 +264,16 @@ nmap     <C-F>n <Plug>CtrlSFCwordPath
 nmap     <C-F>p <Plug>CtrlSFPwordPath
 nnoremap <C-F>o :CtrlSFOpen<CR>
 nnoremap <C-F>t :CtrlSFToggle<CR>
+" Coc
+nnoremap <silent> K :call CocAction('doHover')<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+" Coc prettier on selection
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+"""""""""""""""""""""""
+" Other plugins' config
+"""""""""""""""""""""""
+let g:javascript_sql_dialect = 'pgsql'
