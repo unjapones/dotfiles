@@ -152,8 +152,8 @@ bindsym $mod+Shift+Tab workspace prev
 ## Navigate // Previous Workspace // <><Alt> ← ##
 bindsym $mod+$alt+Left workspace prev
 
-## Navigate // Scratchpad // <><Ctrl> a ##
-bindsym $mod+Ctrl+a scratchpad show
+## Navigate // Scratchpad // <> o ##
+#bindsym $mod+o scratchpad show
 
 ###############################################################################
 # Window and Workspace Configuration
@@ -186,8 +186,8 @@ bindsym $mod+f fullscreen toggle
 ## Modify // Window Floating Toggle // <><Shift> f ##
 bindsym $mod+Shift+f floating toggle
 
-## Modify // Move to Scratchpad // <><Ctrl> m ##
-bindsym $mod+Ctrl+m move to scratchpad
+## Modify // Move to Scratchpad // <><Shift> o ##
+bindsym $mod+Shift+o move to scratchpad
 
 ## Modify // Tile/Float Focus Toggle // <><Shift> t ##
 bindsym $mod+Shift+t focus mode_toggle
