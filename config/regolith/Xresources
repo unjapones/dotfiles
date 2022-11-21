@@ -1,31 +1,10 @@
-St.font:                Fira Sans Regular:pixelsize=13:antialias=true:autohint=true
-i3xrocks.value.font:    JetBrains Mono Regular 11
-i3-wm.bar.font:         pango:JetBrains Mono Regular 11, Material Design Icons 11
-i3-wm.bar.position:	    top
+St.font:                JetBrains Mono Regular:pixelsize=12:antialias=true:autohint=true
+i3xrocks.value.font:    JetBrains Mono Regular 12
+i3-wm.bar.font:         pango:JetBrains Mono Regular 12, Material Design Icons 12
 i3-wm.bar.trayoutput:	  primary
-gnome.gtk.theme:	      Yaru
+gnome.gtk.theme:	      Yaru Dark
 gnome.icon.theme:	      Yaru
 gnome.wallpaper:        /home/topones10/Pictures/walls/DEFAULTWALL
 rofi.icon.theme:        Yaru
 rofi.font:              JetBrains Mono Regular 14
 rofi.theme:             /home/topones10/.config/regolith/styles/lascaille/rofi.rasi
-i3-wm.font:                     pango:JetBrains Mono Regular 11
-i3-wm.workspace.01.name:        1:<span font_desc='JetBrains Mono Regular 11'> 1 </span>
-i3-wm.workspace.02.name:        2:<span font_desc='JetBrains Mono Regular 11'> 2 </span>
-i3-wm.workspace.03.name:        3:<span font_desc='JetBrains Mono Regular 11'> 3 </span>
-i3-wm.workspace.04.name:        4:<span font_desc='JetBrains Mono Regular 11'> 4 </span>
-i3-wm.workspace.05.name:        5:<span font_desc='JetBrains Mono Regular 11'> 5 </span>
-i3-wm.workspace.06.name:        6:<span font_desc='JetBrains Mono Regular 11'> 6 </span>
-i3-wm.workspace.07.name:        7:<span font_desc='JetBrains Mono Regular 11'> 7 </span>
-i3-wm.workspace.08.name:        8:<span font_desc='JetBrains Mono Regular 11'> 8 </span>
-i3-wm.workspace.09.name:        9:<span font_desc='JetBrains Mono Regular 11'> 9 </span>
-i3-wm.workspace.10.name:        10:<span font_desc='JetBrains Mono Regular 11'> 10 </span>
-i3-wm.workspace.11.name:        11:<span font_desc='JetBrains Mono Regular 11'> 11 </span>
-i3-wm.workspace.12.name:        12:<span font_desc='JetBrains Mono Regular 11'> 12 </span>
-i3-wm.workspace.13.name:        13:<span font_desc='JetBrains Mono Regular 11'> 13 </span>
-i3-wm.workspace.14.name:        14:<span font_desc='JetBrains Mono Regular 11'> 14 </span>
-i3-wm.workspace.15.name:        15:<span font_desc='JetBrains Mono Regular 11'> 15 </span>
-i3-wm.workspace.16.name:        16:<span font_desc='JetBrains Mono Regular 11'> 16 </span>
-i3-wm.workspace.17.name:        17:<span font_desc='JetBrains Mono Regular 11'> 17 </span>
-i3-wm.workspace.18.name:        18:<span font_desc='JetBrains Mono Regular 11'> 18 </span>
-i3-wm.workspace.19.name:        19:<span font_desc='JetBrains Mono Regular 11'> 19 </span>

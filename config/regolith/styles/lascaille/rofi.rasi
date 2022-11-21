@@ -13,9 +13,10 @@
    dark4:            #bfbab0;
 
    light1:           #e6e1cf;
+   mine:             #00fff0;
 
    background-color: @dark1;
-   border-color:     @dark2;
+   border-color:     @mine;
    text-color:       @dark3;
    dark-text-color:  @dark4;
    main-color:       @blue;
@@ -25,11 +26,14 @@
 }
 
 window {
+   margin: 0 0 0 0;
+   location: south;
    background-color: @background-color;
    width: 900px;
    padding: 10px;
    fullscreen: false;
-   border:  2px;
+   /* border:  2px; */
+   border:  3px;
    border-radius: 0px;
    border-color: @border-color;
 }
@@ -59,6 +63,10 @@ listview {
    background: @background-color;
 }
 
+element-icon {
+   size: 2.5ch;
+}
+
 element {
    padding: 4px 10px;
 }
@@ -81,7 +89,8 @@ element normal.active {
 
 element selected.normal {
     background-color: @border-color;
-    text-color:       @selected-color;
+    /* text-color:       @selected-color; */
+    text-color:       @background-color;
 }
 
 element selected.urgent {
@@ -91,7 +100,7 @@ element selected.urgent {
 
 element selected.active {
     background-color: @border-color;
-    text-color:       @green;
+    text-color:       @darkblue;
 }
 
 element alternate.normal {

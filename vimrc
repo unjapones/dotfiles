@@ -12,9 +12,9 @@ Plug 'junegunn/vim-easy-align'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " @TODO: replace the following with https://github.com/ctrlpvim/ctrlp.vim
-Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'https://github.com/tpope/vim-obsession.git'
-Plug 'https://github.com/bling/vim-airline.git'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/Raimondi/delimitMate.git'
 
@@ -34,24 +34,56 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'trevordmiller/nova-vim'
 Plug 'https://github.com/rakr/vim-one.git'
 Plug 'https://github.com/arcticicestudio/nord-vim.git'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+" Plug 'wadackel/vim-dogrun'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'https://github.com/rakr/vim-two-firewatch.git'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Rigellute/shades-of-purple.vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'tomasiser/vim-code-dark'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'flrnd/candid.vim'
+Plug 'ntk148v/vim-horizon'
+Plug 'cocopon/iceberg.vim'
+Plug 'ulwlu/simple-light.vim'
+Plug 'macguirerintoul/night_owl_light.vim'
+Plug 'wuelnerdotexe/vim-enfocado'
 
 " Others
-"Plug 'jparise/vim-graphql'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
+Plug 'statico/vim-javascript-sql'
+"Plug 'jparise/vim-graphql'
+Plug 'https://github.com/lifepillar/pgsql.vim.git'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'mattn/emmet-vim'
 
-" JavaScript
-"Plug 'w0rp/ale'
-" TypeScript
+" Javascript/Typescript
+" Plug 'pangloss/vim-javascript'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver'
   \ ]
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
+" Prevent coc from making the cursor go away
+let g:coc_disable_transparent_cursor = 1
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-volar-tools', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-tailwindcss3', {'do': 'yarn install --frozen-lockfile'}
+Plug 'suy/vim-context-commentstring'
+
+" Version control
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
 
 " Initialize plugin system
 call plug#end()
@@ -73,56 +105,70 @@ filetype plugin indent on
 "set softtabstop=2
 " OLD ABOVE
 set breakindent                                      "Mantain indent on wrapping lines
-set linebreak                                        "break lines but on words
-"set autoindent                                       "autoindent
+set autoindent                                       "autoindent
 set tabstop=2 shiftwidth=2 expandtab softtabstop=2   "tabs = 2 spaces
 
 " Setup colorscheme
 " Most of the colorschemes are 256 colors terminal ready
-"set t_Co=256
-"let g:rehash256 = 1
-"set background=dark
+" set t_Co=256
+" let g:rehash256 = 1
+""""""""""""""""""""""""""""""""""""""
+" DRACULA CONFIG
+" colorscheme dracula
+" let g:airline_theme='dracula'
+" let g:dracula_italic=0
+""""""""""""""""""""""""""""""""""""""
+" SHADES OF PURPLE CONFIG
+let g:shades_of_purple_airline = 1
+let g:airline_theme='shades_of_purple'
+colorscheme shades_of_purple
+""""""""""""""""""""""""""""""""""""""
+" GITHUB CONFIG
+" set background=light
+" colorscheme github
+" let g:airline_theme = "github"
+""""""""""""""""""""""""""""""""""""""
+" GRUVBOX CONFIG
+" set background=dark
+" let g:gruvbox_underline=1
+" let g:gruvbox_bold=1
+" let g:gruvbox_guisp_fallback = 'bg'
+" colorscheme gruvbox
+""""""""""""""""""""""""""""""""""""""
+" CODEDARK CONFIG
+" set background=dark
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
+""""""""""""""""""""""""""""""""""""""
+" SOLARIZED LIGHT CONFIG
+" set background=light
+" colorscheme solarized8_flat
+""""""""""""""""""""""""""""""""""""""
+" ENFOCADO colorscheme
 "set background=light
-
-set background=dark
-let g:gruvbox_contrast_dark='hard'
-"colorscheme gruvbox
-"let g:airline_theme='violet'
-colorscheme dracula
-let g:airline_theme='dracula'
-let g:dracula_italic=0
-
-"colorscheme badwolf
-"colorscheme solarized8
-"colorscheme solarized8_flat
-"let g:airline_theme='solarized'
-"colorscheme nova
-"colorscheme hemisu
+" let g:airline_theme = 'enfocado'
+"let g:enfocado_style = 'neon'
+" let g:enfocado_style = 'nature'
+" colorscheme enfocado
+""""""""""""""""""""""""""""""""""""""
 "colorscheme one
-"colorscheme nord
-"colorscheme base16-outrun-dark
-
-"set background=light
-"colorscheme github
-"let g:airline_theme='sol'
-"let g:airline_theme='github'
-
-"colorscheme base16-zenburn
-"colorscheme one
-"colorscheme base16-atelier-cave-light
-"colorscheme base16-atelier-estuary
-"colorscheme base16-bespin
-"colorscheme base16-atelier-estuary-light
-"colorscheme base16-atlas
-"colorscheme base16-atelier-plateau-light
-"colorscheme base16-atelier-forest-light
-"colorscheme base16-atelier-lakeside-light
-"colorscheme base16-summerfruit-light
-"colorscheme base16-atelier-sulphurpool-light
-"colorscheme base16-material-palenight
-
-" Set gutter bg color to match the line number color
-highlight! link SignColumn LineNr
+"colorscheme jummidark
+" set background=dark
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
+function! ToggleBg()
+  if &g:background == 'light'
+    set background=dark
+    let g:shades_of_purple_airline = 1
+    let g:airline_theme='shades_of_purple'
+    colorscheme shades_of_purple
+  else
+    set background=light
+    let g:airline_theme='github'
+    colorscheme github
+  endif
+endfunction
+noremap <F10> :call ToggleBg()<CR>
 
 " Turn on the WiLd menu for multiple options (when hitting the tab key) and
 " some ignored options
@@ -148,6 +194,7 @@ set ruler
 set laststatus=2
 " Display a nicer tab barline, supported by vim-airline
 let g:airline#extensions#tabline#enabled=1
+"
 " Set tab label to show tab number, filename, if modified ('+' is shown if the
 " current window in the tab has been modified)
 set guitablabel=%N/\ %t\ %M
@@ -159,6 +206,7 @@ set colorcolumn=80
 
 " Remap <Leader> from \ to ,
 let mapleader = ","
+" let mapleader = " "
 " Press F8 to toggle highlighting on/off, and show current value.
 noremap <F8> :set hlsearch! hlsearch?<CR>
 " Next & Previous tab mappings
@@ -169,9 +217,29 @@ noremap <C-m> :tabnext<CR>
 noremap <F9> :NERDTreeToggle<CR>
 " CtrlP mapping and custom ignore options
 let g:ctrlp_map = '<c-p>'
+let g:ctrlp_root_markers = ['.vim', '.git', 'node_modules']
 let NERDTreeShowHidden=1
 " Nerdtree config for wildignore
 let NERDTreeRespectWildIgnore=1
+let NERDTreeWinSize=40
+
+" Allow mouse to select tab and buffer
+set mouse=a
+
+" Use persistent history.
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
+
+" last-position-jump*
+" This autocommand jumps to the last known position in a file
+" just after opening it, if the '" mark is set:
+:au BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
 
 
 """""""""""""""""""""""""""""
@@ -188,10 +256,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_cmd = 'CtrlP'
 " CtrlP custom ignore options
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components/build/dist)$',
+    \ 'dir':  '\v[\/](\.(git|hg|svn)|logs|node_modules|vendor|bower_components|build|dist)$',
     \ 'file': '\v\.(exe|so|dll|map)$',
     \ 'link': 'some_bad_symbolic_links'
     \ }
+let g:ctrlp_show_hidden=1
 
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
@@ -206,13 +275,6 @@ let g:ctrlp_custom_ignore = {
 " bind \ (backward slash) to grep shortcut
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
-" ALE config
-" Set ESLint as plugging manager
-"let g:ale_fixers = {
- "\ 'javascript': ['eslint']
- "\ }
-"let g:ale_sign_error = '❌'
-"let g:ale_sign_warning = '⚠️'
 "Coc
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
@@ -220,6 +282,10 @@ endif
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
+let g:jsdoc_formatter='tsdoc'
+let g:doge_filetype_aliases = {
+\  'javascript': [ 'javascript.jsx', 'javascriptreact', 'javascript.tsx', 'typescriptreact', 'typescript', 'typescript.tsx']
+\}
 
 """""""""""""""""""""""""""""
 " Cursor (terminator + tmux)
@@ -262,3 +328,50 @@ nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+inoremap <silent><expr> <c-k> coc#refresh()
+nnoremap <silent> <leader>D :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>s :<C-u>CocList -I symbols<cr>
+nmap <silent> <leader>do <Plug>(coc-codeaction)
+nmap <leader>rn <Plug>(coc-rename)
+" inoremap <C-k>:call CocActionAsync('showSignatureHelp')<cr>
+" inoremap <C-L>:call CocActionAsync('showSignatureHelp')<cr>
+"
+" Coc prettier on selection
+vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>ff <Plug>(coc-format-selected)
+nnoremap <silent> <leader>F :<C-u>CocCommand prettier.formatFile<cr>
+
+
+"""""""""""""""""""""""
+" Sometimes syntax highlighting can get out of sync 
+"""""""""""""""""""""""
+" autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+" autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+"""""""""""""""""""""""
+" Other plugins' config
+"""""""""""""""""""""""
+"let g:javascript_sql_dialect = 'pgsql'
+
+set foldmethod=syntax
+set foldlevelstart=2
+let javaScript_fold=1 
+let typeScript_fold=1 
+let typescript_fold=1 
+
+au BufNewFile,BufRead *.pgsql set filetype=pgsql
+au BufNewFile,BufRead *.pgsql set syntax=pgsql
+
+"""""""""""""""""""""""
+" Vue & coc-volar specific options
+" https://github.com/yaegassy/coc-volar
+"""""""""""""""""""""""
+au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'nuxt.config.ts']
+
+
+" """""""""""""""""""""
+" Emmet
+" Redefine trigger key
+" """""""""""""""""""""
+let g:user_emmet_leader_key='<C-M>'

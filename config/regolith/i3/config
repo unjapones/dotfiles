@@ -74,11 +74,15 @@ set_from_resource $ws19 i3-wm.workspace.19.name "19"
 ## Launch // Greenclip (Rofi) // <> P ##
 bindsym $mod+P exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-## Launch // Terminal // <> Enter ##
-bindsym $mod+Return exec /usr/bin/x-terminal-emulator
+## Launch // Rofimoji (Rofi) // <> E ##
+bindsym $mod+E exec rofi -modi "emoji:/home/topones10/.local/bin/rofimoji" -show emoji
 
-## Launch // Browser // <><Shift> Enter ##
-bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
+## Launch // Terminal // <> Enter ##
+bindsym $mod+Return exec /usr/bin/kitty
+
+## Launch // Terminal Bolder // <><Shift> Enter ##
+# bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
+bindsym $mod+Shift+Return exec /usr/bin/kitty -o include=/home/topones10/.config/kitty/kitty-bolder.conf
 
 set_from_resource $rofiTheme rofi.theme /etc/regolith/styles/lascaille/rofi.rasi
 
@@ -101,6 +105,9 @@ bindsym $mod+Shift+question exec --no-startup-id $i3-wm.program.help
 ## Launch // File Search // <><Alt> Space ##
 set_from_resource $i3-wm.program.file_search i3-wm.program.file_search rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
 bindsym $mod+$alt+space exec $i3-wm.program.file_search
+
+## Polybar // Restart // <><Alt> P ##
+bindsym $mod+$alt+p exec --no-startup-id nohup $HOME/.config/polybar/launch.sh --forest
 
 ###############################################################################
 # Window and Workspace Navigation
@@ -141,7 +148,9 @@ bindsym $mod+Ctrl+8 workspace number $ws18
 bindsym $mod+Ctrl+9 workspace number $ws19
 
 ## Navigate // Next Workspace // <> Tab ##
-bindsym $mod+Tab workspace next
+# bindsym $mod+Tab workspace next
+## Navigate // Previous Window // <> Tab ##
+bindsym $mod+Tab exec pkill -USR1 -F "${XDG_RUNTIME_DIR}/swap_focus.pid"
 
 ## Navigate // Next Workspace // <><Alt> → ##
 bindsym $mod+$alt+Right workspace next
@@ -153,7 +162,7 @@ bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+$alt+Left workspace prev
 
 ## Navigate // Scratchpad // <> o ##
-bindsym $mod+o scratchpad show
+#bindsym $mod+o scratchpad show
 
 ###############################################################################
 # Window and Workspace Configuration
@@ -243,7 +252,7 @@ bindsym $mod+$alt+Ctrl+9 move container to workspace number $ws19; workspace num
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-hide_edge_borders smart
+#hide_edge_borders smart
 
 ###############################################################################
 # Session Management
@@ -259,8 +268,8 @@ bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotoo
 bindsym $mod+Shift+c reload
 
 ## Session // Refresh Session // <><Shift> r ##
-set_from_resource $i3-wm.program.refresh_ui i3-wm.program.refresh_ui /usr/bin/regolith-look refresh
-bindsym $mod+Shift+r exec --no-startup-id $i3-wm.program.refresh_ui
+##set_from_resource $i3-wm.program.refresh_ui i3-wm.program.refresh_ui /usr/bin/regolith-look refresh
+##bindsym $mod+Shift+r exec --no-startup-id $i3-wm.program.refresh_ui
 
 ## Session // Restart i3 // <><Ctrl> r ##
 bindsym $mod+Ctrl+r restart
@@ -325,7 +334,9 @@ bindsym $mod+period exec /usr/bin/i3-snapshot -c < /tmp/i3-snapshot
 
 # Toggle bar visibility
 ## Modify // Toggle Bar // <> i ##
-bindsym $mod+i bar mode toggle
+#bindsym $mod+i bar mode toggle
+bindsym $mod+i exec --no-startup-id polybar-msg cmd toggle
+
 
 # Cause Settings app to float above tiled windows
 floating_maximum_size -1 x -1
@@ -340,32 +351,32 @@ mode "Resize Mode" {
         # These bindings trigger as soon as you enter the resize mode
 
         ## Resize // Resize Window // ↑ ↓ ← → ##
-        bindsym Left resize shrink width 6 px or 6 ppt
-        bindsym Down resize grow height 6 px or 6 ppt
-        bindsym Up resize shrink height 6 px or 6 ppt
-        bindsym Right resize grow width 6 px or 6 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
-        bindsym Shift+Left resize shrink width 12 px or 12 ppt
-        bindsym Shift+Down resize grow height 12 px or 12 ppt
-        bindsym Shift+Up resize shrink height 12 px or 12 ppt
-        bindsym Shift+Right resize grow width 12 px or 12 ppt
+        bindsym Shift+Left resize shrink width 10 px or 10 ppt
+        bindsym Shift+Down resize grow height 10 px or 10 ppt
+        bindsym Shift+Up resize shrink height 10 px or 10 ppt
+        bindsym Shift+Right resize grow width 10 px or 10 ppt
 
         ## Resize // Resize Window // k j h l ##
-        bindsym h resize shrink width 6 px or 6 ppt
-        bindsym k resize grow height 6 px or 6 ppt
-        bindsym j resize shrink height 6 px or 6 ppt
-        bindsym l resize grow width 6 px or 6 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
-        bindsym Shift+h resize shrink width 12 px or 12 ppt
-        bindsym Shift+k resize grow height 12 px or 12 ppt
-        bindsym Shift+j resize shrink height 12 px or 12 ppt
-        bindsym Shift+l resize grow width 12 px or 12 ppt
+        bindsym Shift+h resize shrink width 10 px or 10 ppt
+        bindsym Shift+k resize grow height 10 px or 10 ppt
+        bindsym Shift+j resize shrink height 10 px or 10 ppt
+        bindsym Shift+l resize grow width 10 px or 10 ppt
 
         ## Resize // Window Gaps // + - ##
-        bindsym minus gaps inner current minus 6
-        bindsym plus gaps inner current plus 6
-        bindsym Shift+minus gaps inner current minus 12
-        bindsym Shift+plus gaps inner current plus 12
+        bindsym minus gaps inner current minus 5
+        bindsym plus gaps inner current plus 5
+        bindsym Shift+minus gaps inner current minus 10
+        bindsym Shift+plus gaps inner current plus 10
 
         ## Resize // Exit Resize Mode // Escape or Enter ## 
         bindsym Return mode "default"
@@ -379,20 +390,21 @@ bindsym $mod+r mode "Resize Mode"
 ###############################################################################
 
 # Disable titlebar
+# set_from_resource $i3-wm.floatingwindow.border.size i3-wm.floatingwindow.border.size 1
 set_from_resource $i3-wm.window.border.size i3-wm.window.border.size 1
-set_from_resource $i3-wm.floatingwindow.border.size i3-wm.floatingwindow.border.size 1
+set_from_resource $i3-wm.floatingwindow.border.size i3-wm.floatingwindow.border.size 0
 default_border pixel $i3-wm.window.border.size
-default_floating_border pixel $i3-wm.floatingwindow.border.size
+# default_floating_border pixel $i3-wm.floatingwindow.border.size
 
 # Specify the distance between windows in pixels. (i3-gaps)
-set_from_resource $i3-wm.gaps.inner.size i3-wm.gaps.inner.size 5
+set_from_resource $i3-wm.gaps.inner.size i3-wm.gaps.inner.size 10
 set_from_resource $i3-wm.gaps.outer.size i3-wm.gaps.outer.size 0
 gaps inner $i3-wm.gaps.inner.size
 gaps outer $i3-wm.gaps.outer.size
 
 # Only enable gaps on a workspace when there is at least one container
-set_from_resource $i3-wm.gaps.smart i3-wm.gaps.smart on
-smart_gaps $i3-wm.gaps.smart
+# set_from_resource $i3-wm.gaps.smart i3-wm.gaps.smart on
+# smart_gaps $i3-wm.gaps.smart
 
 # Enable popup during fullscreen
 set_from_resource $i3-wm.gaps.popup_during_fullscreen i3-wm.gaps.popup_during_fullscreen smart
@@ -461,15 +473,15 @@ set_from_resource $i3-wm.bar.workspace.urgent.background.color i3-wm.bar.workspa
 set_from_resource $i3-wm.bar.workspace.urgent.text.color i3-wm.bar.workspace.urgent.text.color "#fdf6e3"
 
 # Sets i3 font for dialogs
-set_from_resource $i3-wm.font i3-wm.font pango:JetBrains Mono 11
+set_from_resource $i3-wm.font i3-wm.font pango:JetBrains Mono Regular 12
 font $i3-wm.font
 
 ###############################################################################
 # i3 Bar
 ###############################################################################
 
-set_from_resource $i3-wm.bar.position i3-wm.bar.position bottom
-set_from_resource $i3-wm.bar.font i3-wm.bar.font pango:JetBrains Mono 11, Material Design Icons 11
+set_from_resource $i3-wm.bar.position i3-wm.bar.position top
+set_from_resource $i3-wm.bar.font i3-wm.bar.font pango:JetBrains Mono Regular 12, Material Design Icons 12
 set_from_resource $i3-wm.bar.separator i3-wm.bar.separator " "
 set_from_resource $i3-wm.bar.trayoutput i3-wm.bar.trayoutput none
 set_from_resource $i3-wm.bar.stripworkspacenumbers i3-wm.bar.stripworkspacenumbers yes
@@ -478,26 +490,26 @@ set_from_resource $i3-wm.bar.stripworkspacenumbers i3-wm.bar.stripworkspacenumbe
 set_from_resource $i3-wm.bar.status_command i3-wm.bar.status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
 
 # The bar configuration
-bar {
-  position $i3-wm.bar.position
-  font $i3-wm.bar.font
-  separator_symbol $i3-wm.bar.separator
-  status_command $i3-wm.bar.status_command
-  tray_output $i3-wm.bar.trayoutput
-  strip_workspace_numbers $i3-wm.bar.stripworkspacenumbers
+# bar {
+#   position $i3-wm.bar.position
+#   font $i3-wm.bar.font
+#   separator_symbol $i3-wm.bar.separator
+#   status_command $i3-wm.bar.status_command
+#   tray_output $i3-wm.bar.trayoutput
+#   strip_workspace_numbers $i3-wm.bar.stripworkspacenumbers
 
-  colors {
-      background $i3-wm.bar.background.color
-      statusline $i3-wm.bar.statusline.color
-      separator  $i3-wm.bar.separator.color
+#   colors {
+#       background $i3-wm.bar.background.color
+#       statusline $i3-wm.bar.statusline.color
+#       separator  $i3-wm.bar.separator.color
 
-#                        BORDER  BACKGROUND TEXT
-      focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
-      active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
-      inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
-      urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
-  }
-}
+# #                        BORDER  BACKGROUND TEXT
+#       focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
+#       active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
+#       inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
+#       urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
+#   }
+# }
 
 ###############################################################################
 # External programs launched with i3
@@ -528,7 +540,30 @@ set_from_resource $i3-wm.program.2 i3-wm.program.2 :
 exec --no-startup-id $i3-wm.program.2
 set_from_resource $i3-wm.program.3 i3-wm.program.3 :
 exec --no-startup-id $i3-wm.program.3
-for_window [class="firefox-jlshirai"] move to workspace $ws2
 for_window [class="Slack"] move to workspace $ws6
 for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Pavucontrol"] move to workspace $ws10
+for_window [instance="sun-awt-X10-XWindowPeer"] focus
+
+#exec --no-startup-id terminator --title=TMUX_SCRATCH -e tmux
+exec --no-startup-id /usr/bin/kitty -o include=/home/topones10/.config/kitty/kitty-bolder.conf --title=TMUX_SCRATCH -e tmux
+for_window [title="TMUX_SCRATCH"] floating_enable
+for_window [title="TMUX_SCRATCH"] move scratchpad; [title="TMUX_SCRATCH"] scratchpad show; move scratchpad
+bindsym $mod+o [title="TMUX_SCRATCH"] scratchpad show
+
+# Start script to switch to last previous window in history
+# https://github.com/olivierlemoal/i3-swap-focus
+exec i3-swap-focus
+# Launch polybar
+exec --no-startup-id $HOME/.config/polybar/launch.sh --forest
+
+for_window [class="^.*"] border pixel 3
+gaps inner 6
+gaps outer 6
+
+client.focused          #00fff0 #00fff0 #444444aa #00fff0 #00fff0
+client.unfocused        #ccccccaa #ccccccaa #444444aa #ccccccaa #ccccccaa
+client.focused_inactive #ccccccaa #ccccccaa #444444aa #ccccccaa #ccccccaa
+client.urgent           #ccccccaa #ccccccaa #444444aa #ccccccaa #ccccccaa 
+client.placeholder      #ccccccaa #ccccccaa #444444aa #ccccccaa #ccccccaa
+client.background       #ccccccaa
