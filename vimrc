@@ -46,7 +46,6 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'flrnd/candid.vim'
 Plug 'ntk148v/vim-horizon'
 Plug 'cocopon/iceberg.vim'
-Plug 'ulwlu/simple-light.vim'
 Plug 'macguirerintoul/night_owl_light.vim'
 Plug 'wuelnerdotexe/vim-enfocado'
 
@@ -56,8 +55,8 @@ Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'statico/vim-javascript-sql'
 "Plug 'jparise/vim-graphql'
 Plug 'https://github.com/lifepillar/pgsql.vim.git'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'mattn/emmet-vim'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Javascript/Typescript
 " Plug 'pangloss/vim-javascript'
@@ -90,6 +89,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Fix true-color color schemes (from solarized8)
+set termguicolors
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -217,7 +217,7 @@ noremap <C-m> :tabnext<CR>
 noremap <F9> :NERDTreeToggle<CR>
 " CtrlP mapping and custom ignore options
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_root_markers = ['.vim', '.git', 'node_modules']
+let g:ctrlp_root_markers = ['.vim', '.git', 'node_modules', 'package.json', 'app.js']
 let NERDTreeShowHidden=1
 " Nerdtree config for wildignore
 let NERDTreeRespectWildIgnore=1
