@@ -261,6 +261,7 @@ let g:ctrlp_custom_ignore = {
     \ 'link': 'some_bad_symbolic_links'
     \ }
 let g:ctrlp_show_hidden=1
+let g:ctrlp_working_path_mode = 'w'
 
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
